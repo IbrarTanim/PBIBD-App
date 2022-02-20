@@ -1,0 +1,62 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PBIBD" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+        <item name="colorOnPrimary">@color/primaryTextColor</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
+        <item name="colorOnSecondary">@color/secondaryTextColor</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.PBIBD.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.PBIBD.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.PBIBD.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:radius">15dp</item>
+        <item name="colorControlActivated">@color/primaryDarkColor</item>
+        <item name="android:textCursorDrawable">@color/secondaryColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="boxStrokeColor">@color/primaryDarkColor</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="passwordToggleTint">@color/secondaryColor</item>
+        <item name="startIconTint">@color/secondaryColor</item>
+        <item name="endIconMode">@null</item>
+    </style>
+
+    <style name="TextInputDropDownLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="android:radius">15dp</item>
+        <item name="colorControlActivated">@color/primaryDarkColor</item>
+        <item name="android:textCursorDrawable">@color/secondaryColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="boxStrokeColor">@color/primaryDarkColor</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="passwordToggleTint">@color/secondaryColor</item>
+        <item name="startIconTint">@color/secondaryColor</item>
+        <item name="endIconMode">@null</item>
+    </style>
+
+
+    <!-- Button Style -->
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primaryDarkColor</item>
+        <item name="rippleColor">@color/secondaryLightColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconTint">@color/secondaryLightColor</item>
+    </style>
+
+
+</resources>

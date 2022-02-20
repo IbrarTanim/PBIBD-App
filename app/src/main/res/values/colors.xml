@@ -1,0 +1,21 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<resources>
+    <color name="primaryColor">#179970</color>
+    <color name="primaryLightColor">#57cb9e</color>
+    <color name="primaryDarkColor">#006a45</color>
+    <color name="secondaryColor">#af8e37</color>
+    <color name="secondaryLightColor">#e3be65</color>
+    <color name="secondaryDarkColor">#7c6102</color>
+    <color name="primaryTextColor">#FFFFFF</color>
+    <color name="secondaryTextColor">#000000</color>
+
+    <color name="profile_background">#EFECE8</color>
+    <color name="profile_foreground">#C6C3BD</color>
+    <color name="box_stroke">#949494</color>
+
+    <!--Basic Colors-->
+    <color name="red">#e50000</color>
+    <color name="green">#4ca64c</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

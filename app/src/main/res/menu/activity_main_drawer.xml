@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/pbi_home"
+            android:title="Dashboard" />
+
+        <item
+            android:id="@+id/nav_self_registration"
+            android:icon="@drawable/pbi_self_reg"
+            android:title="Self Registration" />
+
+        <item
+            android:id="@+id/nav_incomes"
+            android:icon="@drawable/pbi_income"
+            android:title="Incomes" />
+
+        <item
+            android:id="@+id/nav_exchange_point"
+            android:icon="@drawable/pbi_exchange_money"
+            android:title="Exchange Point" />
+
+        <item
+            android:id="@+id/nav_fund_transfer"
+            android:icon="@drawable/pbi_fund_transfer"
+            android:title="Fund Transfer" />
+
+        <item
+            android:id="@+id/nav_my_placement"
+            android:icon="@drawable/pbi_placement"
+            android:title="My Placement" />
+
+        <item
+            android:id="@+id/nav_insurance_policy"
+            android:icon="@drawable/pbi_insurance"
+            android:title="Insurance Policy" />
+
+        <item
+            android:id="@+id/nav_shopping_point_recharge"
+            android:icon="@drawable/pbi_fund_transfer"
+            android:title="Shopping Point Recharge" />
+
+        <item
+            android:id="@+id/nav_online_conference"
+            android:title="Online Conference" />
+    </group>
+
+</menu>

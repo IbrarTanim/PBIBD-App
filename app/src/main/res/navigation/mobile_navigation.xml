@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_dashboard">
+
+
+    <!--Side Menu Fragments Starts From Here-->
+    <fragment
+        android:id="@+id/nav_dashboard"
+        android:name="com.pbilbd.ui.dashboard.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_nav_dashboard_to_dash_update_kyc"
+            app:destination="@id/dash_update_kyc" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_self_registration"
+        android:name="com.pbilbd.ui.selfregistration.SelfRegistrationFragment"
+        android:label="Self Registration"
+        tools:layout="@layout/fragment_self_registration" />
+
+    <fragment
+        android:id="@+id/nav_incomes"
+        android:name="com.pbilbd.ui.income.IncomeFragment"
+        android:label="Incomes"
+        tools:layout="@layout/fragment_income" />
+
+    <fragment
+        android:id="@+id/nav_exchange_point"
+        android:name="com.pbilbd.ui.exchangepoint.ExchangePointFragment"
+        android:label="Exchange Point"
+        tools:layout="@layout/exchange_point_fragment" />
+
+    <fragment
+        android:id="@+id/nav_fund_transfer"
+        android:name="com.pbilbd.ui.fundtransfer.FundTransferFragment"
+        android:label="Fund Transfer"
+        tools:layout="@layout/fund_transfer_fragment" />
+
+    <fragment
+        android:id="@+id/nav_insurance_policy"
+        android:name="com.pbilbd.ui.insurancepolicy.InsurancePolicyFragment"
+        android:label="Insurance Policy"
+        tools:layout="@layout/insurance_policy_fragment" />
+
+    <fragment
+        android:id="@+id/nav_my_placement"
+        android:name="com.pbilbd.ui.myplacement.MyPlacementFragment"
+        android:label="My Placement"
+        tools:layout="@layout/my_placement_fragment" />
+
+    <fragment
+        android:id="@+id/nav_online_conference"
+        android:name="com.pbilbd.ui.onlineconference.OnlineConferenceFragment"
+        android:label="Online Conference"
+        tools:layout="@layout/online_conference_fragment" />
+
+    <fragment
+        android:id="@+id/nav_shopping_point_recharge"
+        android:name="com.pbilbd.ui.shoppingpointrecharge.ShoppingPointRechargeFragment"
+        android:label="Shopping Point Recharge"
+        tools:layout="@layout/shopping_point_recharge_fragment" />
+
+    <!--Side Menu Fragments Ends Here-->
+
+    <!--DashBoard Fragments Starts From Here-->
+
+    <fragment
+        android:id="@+id/dash_update_kyc"
+        android:name="com.pbilbd.ui.dashboard.updatekyc.UpdateKYCFragment"
+        android:label="Update KYC"
+        tools:layout="@layout/update_k_y_c_fragment" />
+
+
+    <!--DashBoard Fragments Ends Here-->
+
+</navigation>

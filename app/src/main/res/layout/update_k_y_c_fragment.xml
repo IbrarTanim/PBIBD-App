@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.dashboard.updatekyc.UpdateKYCFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/marquee_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/secondaryColor"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:padding="@dimen/five"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="To Complete The KYC Process Your Shopping Point Must Have 2525/="
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/balance_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/twenty"
+            android:layout_marginBottom="@dimen/ten"
+            android:background="@color/white"
+            android:padding="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintTop_toBottomOf="@+id/marquee_text">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="0"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Current Shopping Point Balance"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/ButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/twenty"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginEnd="@dimen/twenty"
+                    android:layout_marginBottom="@dimen/ten"
+                    android:text="@string/recharge_now_btn_warning"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/placement_user_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Placement User Name"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/balance_card">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/position_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Position"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/placement_user_layout">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/own_fb_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Own Facebook Link"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/position_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/select_user_btn"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="Select User"
+            app:layout_constraintTop_toBottomOf="@+id/own_fb_layout" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/total_insurance_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Total Insurance"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/select_user_btn">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_info_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="User Information"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total_insurance_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_first_name_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="First Name"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_info_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_last_name_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Last Name"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_first_name_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_father_name_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Father Name"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_last_name_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_mother_name_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Mother Name"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_father_name_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_mobile_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Mobile Number"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_mother_name_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/gender_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Gender"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/user_mobile_layout">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_present_address_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Present Address"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/gender_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_permanent_address_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Permanent Address"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_present_address_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_email_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Email"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_permanent_address_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_user_id_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="User ID"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_email_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/blood_group_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Blood Group"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/user_user_id_layout">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/religion_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Religion"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/blood_group_layout">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/date_birth_layout_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="Date Of Birth"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/religion_layout" />
+
+        <RelativeLayout
+            android:id="@+id/date_birth_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/three"
+            android:layout_marginEnd="@dimen/twenty"
+            android:background="@drawable/box_stroke_selector"
+            android:orientation="horizontal"
+            android:padding="@dimen/three"
+            app:layout_constraintTop_toBottomOf="@+id/date_birth_layout_title">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="mm/dd/yyyy" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/five"
+                android:background="?selectableItemBackground"
+                android:padding="@dimen/five"
+                android:src="@drawable/pbi_calender" />
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/country_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Country"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/date_birth_layout">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nid_passport_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="NID/Passport Number"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/country_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/nid_passport_front_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="NID/Passport Front Photo"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nid_passport_layout" />
+
+        <LinearLayout
+            android:id="@+id/nid_passport_front_photo_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/three"
+            android:layout_marginEnd="@dimen/twenty"
+            android:background="@drawable/box_stroke_selector"
+            android:orientation="horizontal"
+            android:padding="@dimen/three"
+            app:layout_constraintTop_toBottomOf="@+id/nid_passport_front_title">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/five"
+                android:layout_marginEnd="@dimen/ten"
+                android:text="Choose File" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="No File Selected" />
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/nid_passport_back_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="NID/Passport Back Photo"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nid_passport_front_photo_layout" />
+
+        <LinearLayout
+            android:id="@+id/nid_passport_back_photo_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/three"
+            android:layout_marginEnd="@dimen/twenty"
+            android:background="@drawable/box_stroke_selector"
+            android:orientation="horizontal"
+            android:padding="@dimen/three"
+            app:layout_constraintTop_toBottomOf="@+id/nid_passport_back_title">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/five"
+                android:layout_marginEnd="@dimen/ten"
+                android:text="Choose File" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="No File Selected" />
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/nominee_info_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="Nominee Information"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nid_passport_back_photo_layout" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nominee_name_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Name Of Nominee"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/nominee_info_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nominee_relation_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Relation With Nominee"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/nominee_name_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/nominee_date_birth_layout_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="Date Of Birth"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nominee_relation_layout" />
+
+        <RelativeLayout
+            android:id="@+id/nominee_date_birth_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/three"
+            android:layout_marginEnd="@dimen/twenty"
+            android:background="@drawable/box_stroke_selector"
+            android:orientation="horizontal"
+            android:padding="@dimen/three"
+            app:layout_constraintTop_toBottomOf="@+id/nominee_date_birth_layout_title">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="mm/dd/yyyy" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/five"
+                android:background="?selectableItemBackground"
+                android:padding="@dimen/five"
+                android:src="@drawable/pbi_calender" />
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nominee_address_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Address"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/nominee_date_birth_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bank_info_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="Bank Information"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nominee_address_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/bank_account_name_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Account Name"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/bank_info_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/bank_bank_name_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Bank Name"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/bank_account_name_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/bank_account_number_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Account Number"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/bank_bank_name_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/bank_branch_name_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Branch Name"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/bank_account_number_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mobile_bank_info_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="Mobile Bank Information"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bank_branch_name_layout" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mobile_bank_name_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Select Mobile Bank"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/mobile_bank_info_title">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mobile_bank_number_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Mobile Number"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/mobile_bank_name_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/insurance_info_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="Insurance Information"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mobile_bank_number_layout" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/insurance_policy_number_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Insurance Policy Number"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/insurance_info_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/insurance_document_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="Insurance Document"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/insurance_policy_number_layout" />
+
+        <LinearLayout
+            android:id="@+id/insurance_document_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/three"
+            android:layout_marginEnd="@dimen/twenty"
+            android:background="@drawable/box_stroke_selector"
+            android:orientation="horizontal"
+            android:padding="@dimen/three"
+            app:layout_constraintTop_toBottomOf="@+id/insurance_document_title">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/five"
+                android:layout_marginEnd="@dimen/ten"
+                android:text="Choose File" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="No File Selected" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/update_kyc_btn"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/twenty"
+            android:text="Update"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/insurance_document_layout" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/change_photo_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/twenty"
+            android:background="@color/white"
+            android:padding="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintTop_toBottomOf="@+id/update_kyc_btn">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/two_hundred_ten"
+                    android:layout_height="@dimen/two_hundred_ten"
+                    android:layout_marginTop="@dimen/twenty"
+                    android:src="@drawable/pbi_user"
+                    app:civ_border_color="@color/profile_foreground"
+                    app:civ_border_width="@dimen/one"
+                    app:civ_circle_background_color="@color/profile_background" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/change_photo_btn"
+                    style="@style/ButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/twenty"
+                    android:layout_marginTop="@dimen/twenty"
+                    android:layout_marginEnd="@dimen/twenty"
+                    android:layout_marginBottom="@dimen/twenty"
+                    android:text="Change Photo"
+                    android:textStyle="bold"
+                    app:icon="@drawable/pbi_camera"
+                    app:iconGravity="textStart" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <View
+            android:layout_width="@dimen/one"
+            android:layout_height="@dimen/one"
+            android:layout_marginTop="@dimen/twenty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/change_photo_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

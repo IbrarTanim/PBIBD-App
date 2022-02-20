@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.dashboard.DashboardFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/ten">
+
+        <!--**********************************************************************-->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_kyc"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/dash_kyc_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Update KYC"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:background="@color/red"
+                    android:padding="@dimen/seven"
+                    android:text="Update KYC to activate your account."
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_work_share"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guide"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/dash_work_share_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Today Work And Sharing"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_transfer_point"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dash_kyc">
+
+            <LinearLayout
+                android:id="@+id/dash_transfer_point_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Transfer Point"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_exchange_point"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@+id/dash_work_share">
+
+            <LinearLayout
+                android:id="@+id/dash_exchange_point_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Exchange Point"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:padding="@dimen/seven"
+                    android:text="0/="
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/primaryColor" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_introducer_bonus"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dash_transfer_point">
+
+            <LinearLayout
+                android:id="@+id/dash_introducer_bonus_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Introducer Bonus"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_tier_bonus"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@+id/dash_exchange_point">
+
+            <LinearLayout
+                android:id="@+id/dash_tier_bonus_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Tier Bonus"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_achievement"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dash_introducer_bonus">
+
+            <LinearLayout
+                android:id="@+id/dash_achievement_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Achievement"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_sale_bonus"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@+id/dash_tier_bonus">
+
+            <LinearLayout
+                android:id="@+id/dash_sale_bonus_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Monthly Team Sale Bonus"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_affiliate_point"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dash_achievement">
+
+            <LinearLayout
+                android:id="@+id/dash_affiliate_point_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Affiliate Point"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:padding="@dimen/seven"
+                    android:text="0/="
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/primaryColor" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_shopping_point"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@+id/dash_sale_bonus">
+
+            <LinearLayout
+                android:id="@+id/dash_shopping_point_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Shopping Point"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:padding="@dimen/seven"
+                    android:text="0/="
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/primaryColor" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_pbc_point"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dash_affiliate_point">
+
+            <LinearLayout
+                android:id="@+id/dash_pbc_point_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="PBC Point"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:padding="@dimen/seven"
+                    android:text="0/="
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/primaryColor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:padding="@dimen/seven"
+                    android:text="1 PBC = 1 BDT"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/primaryColor" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_social_work_point"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@+id/dash_shopping_point">
+
+            <LinearLayout
+                android:id="@+id/dash_social_work_point_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Social Work Point"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:padding="@dimen/seven"
+                    android:text="0/="
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/primaryColor" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_buy_product_shopping"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dash_pbc_point">
+
+            <LinearLayout
+                android:id="@+id/dash_buy_product_shopping_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Buy Product Shopping"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

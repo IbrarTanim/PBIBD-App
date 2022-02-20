@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PBIBD</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Touhidur Rahman</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="recharge_now_btn_warning">\nInsufficient Balance\n\nRecharge Now\n</string>
+    <string name="recharge_now_btn">\nRecharge Now\n</string>
+    <string name="warning_empty">Field Must Not Be Empty!</string>
+    <string name="warning_email">Invalid Email Address!</string>
+    <string name="warning_pass">Password Must Be Atleast 8 Digits!</string>
+    <string name="warning_con_pass">Password Does Not Match!</string>
+    <string name="warning_phone">Invalid Phone Number!</string>
+</resources>
