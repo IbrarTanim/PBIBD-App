@@ -1,22 +1,29 @@
 package com.pbilbd.activities.signup;
 
-import android.content.Context;
-
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.pbilbd.dto.responses.reg422error.Message;
+
+import java.util.HashMap;
 
 public class SignUpViewModel extends ViewModel {
 
     private SignUpRepository repository;
-    private LiveData<Integer> errorLiveData;
 
-    public void initViewModel(Context context) {
-        repository = new SignUpRepository(context);
-        errorLiveData = new MutableLiveData<>();
+    public void initViewModel(HashMap<String, String> registerParams) {
+        repository = new SignUpRepository(registerParams);
     }
 
-    public LiveData<Integer> getErrorLiveData() {
-        return repository.getErrorLiveData();
+    public LiveData<Integer> getErrorsLiveData() {
+        return repository.getErrorsLiveData();
+    }
+
+    public LiveData<Message> getErrorResponseLiveData() {
+        return repository.getErrorResponseLiveData();
+    }
+
+    public LiveData<String> getResponseMessageLiveData() {
+        return repository.getResponseMessageLiveData();
     }
 }

@@ -1,7 +1,5 @@
 package com.pbilbd.network;
 
-import android.content.Context;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pbilbd.constants.BaseConstants;
@@ -22,16 +20,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkClient {
 
-    private static Retrofit retrofit = null;
+    //use volatile to make all the write before using instance variable
+    private static volatile Retrofit retrofit = null;
+    private static NetworkInterface networkInterface;
+
+    //Gson builder to convert json
     private static Gson gson = new GsonBuilder()
             .setLenient()
             .create();
-    private Context context;
 
-    public NetworkClient(Context context) {
-        this.context = context;
-    }
 
+    //check unsafe client
     public static OkHttpClient.Builder getUnsafeOkHttpClient() {
 
         try {
@@ -74,14 +73,34 @@ public class NetworkClient {
         }
     }
 
-    public Retrofit getClient() {
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BaseConstants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(getUnsafeOkHttpClient().build())
-                .build();
+    //create singleton instance
+    public static Retrofit getClient() {
+
+        if (retrofit == null){
+
+            synchronized (NetworkClient.class){
+
+                if (retrofit == null){
+
+                    retrofit = new Retrofit.Builder()
+                            .baseUrl(BaseConstants.DEV_BASE_URL)
+                            .addConverterFactory(GsonConverterFactory.create(gson))
+                            .client(getUnsafeOkHttpClient().build())
+                            .build();
+
+                }
+
+            }
+
+        }
 
         return retrofit;
+    }
+
+
+    //get Retrofit service
+    public static NetworkInterface getNetworkService(){
+        return networkInterface = NetworkClient.getClient().create(NetworkInterface.class);
     }
 }
