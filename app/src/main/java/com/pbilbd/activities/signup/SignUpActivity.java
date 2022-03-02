@@ -19,6 +19,7 @@ import com.pbilbd.constants.BaseConstants;
 import com.pbilbd.databinding.ActivitySignUpBinding;
 import com.pbilbd.dto.responses.reg422error.Message;
 import com.pbilbd.utils.ExecutorServices;
+import com.pbilbd.utils.ProgressDialog;
 
 import java.util.HashMap;
 
@@ -54,6 +55,12 @@ public class SignUpActivity extends AppCompatActivity {
                 binding.signUpMotionLayout.transitionToEnd();
             }
         }, 300);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         /**
          * Initialize
@@ -92,13 +99,11 @@ public class SignUpActivity extends AppCompatActivity {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent nextActivity = new Intent(activity, SignInActivity.class);
                 nextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 nextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 nextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(nextActivity);
-
             }
         });
 
@@ -111,7 +116,6 @@ public class SignUpActivity extends AppCompatActivity {
         binding.regBtnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (binding.regCheckBoxTerms.isChecked()) {
                     if (validation.validate()) {
                         registerUser();
@@ -119,15 +123,13 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     Toasty.warning(activity, "Please Accept Terms And Condition!").show();
                 }
-
-
             }
         });
     }
 
     private void registerUser() {
 
-        //binding.regBtnSignUp.setEnabled(false);
+        binding.regBtnSignUp.setEnabled(false);
 
         String firstName = String.valueOf(binding.regEtFirstName.getText());
         String lastName = String.valueOf(binding.regEtLastName.getText());
@@ -149,6 +151,7 @@ public class SignUpActivity extends AppCompatActivity {
         registerParams.put("referred_by", introducedBy);
 
         //background task start
+        ProgressDialog.show(activity);
         ExecutorServices
                 .getExecutor()
                 .execute(new Runnable() {
@@ -168,56 +171,77 @@ public class SignUpActivity extends AppCompatActivity {
                                             public void onChanged(Integer integer) {
 
                                                 if (integer == 200) {
+                                                    ProgressDialog.cancel();
                                                     viewModel
                                                             .getResponseMessageLiveData()
                                                             .observe(activity, new Observer<String>() {
                                                                 @Override
                                                                 public void onChanged(String s) {
-                                                                    if (s != null){
+                                                                    if (s != null) {
                                                                         Toasty.success(activity, s, Toasty.LENGTH_LONG, true).show();
                                                                     }
                                                                 }
                                                             });
-                                                }else if (integer == 422){
+                                                    new Handler().postDelayed(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            Intent loginIntent = new Intent(activity, SignInActivity.class);
+                                                            loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                            loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                            loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                            startActivity(loginIntent);
+                                                        }
+                                                    },500);
+
+                                                } else if (integer == 422) {
+                                                    ProgressDialog.cancel();
                                                     viewModel
                                                             .getErrorResponseLiveData()
                                                             .observe(activity, new Observer<Message>() {
                                                                 @Override
                                                                 public void onChanged(Message message) {
-
-                                                                    if (message != null){
-                                                                        if (message.getEmail() != null && message.getEmail().size() > 0){
+                                                                    if (message != null) {
+                                                                        if (message.getEmail() != null && message.getEmail().size() > 0) {
                                                                             binding.regEtEmailLayout.setError(message.getEmail().get(0));
                                                                         }
-                                                                        if (message.getPhone() != null && message.getPhone().size() > 0){
+                                                                        if (message.getPhone() != null && message.getPhone().size() > 0) {
                                                                             binding.regEtPhoneLayout.setError(message.getPhone().get(0));
                                                                         }
-                                                                        if (message.getUsername() != null && message.getUsername().size() > 0){
+                                                                        if (message.getUsername() != null && message.getUsername().size() > 0) {
                                                                             binding.regEtUserIdLayout.setError(message.getUsername().get(0));
                                                                         }
-                                                                        if (message.getPassword() != null && message.getPassword().size() > 0){
+                                                                        if (message.getPassword() != null && message.getPassword().size() > 0) {
                                                                             binding.regEtPasswordLayout.setError(message.getPassword().get(0));
                                                                         }
-                                                                        if (message.getReferredBy() != null && message.getReferredBy().size() > 0){
+                                                                        if (message.getReferredBy() != null && message.getReferredBy().size() > 0) {
                                                                             binding.regEtIntroducerLayout.setError(message.getReferredBy().get(0));
                                                                         }
                                                                     }
 
                                                                 }
                                                             });
-                                                }else if (integer == BaseConstants.UNKNOWN_ERROR){
+                                                    binding.regBtnSignUp.setEnabled(true);
+                                                } else if (integer == BaseConstants.UNKNOWN_ERROR) {
+                                                    ProgressDialog.cancel();
                                                     Toasty.warning(activity, BaseConstants.ERROR_UNKNOWN).show();
-                                                }else if (integer == BaseConstants.FAILURE_ERROR){
+                                                    binding.regBtnSignUp.setEnabled(true);
+                                                } else if (integer == BaseConstants.FAILURE_ERROR) {
+                                                    ProgressDialog.cancel();
                                                     Toasty.warning(activity, BaseConstants.ERROR_FAILURE).show();
+                                                    binding.regBtnSignUp.setEnabled(true);
+                                                } else {
+                                                    ProgressDialog.cancel();
+                                                    Toasty.warning(activity, BaseConstants.ERROR_UNKNOWN).show();
+                                                    binding.regBtnSignUp.setEnabled(true);
                                                 }
 
                                             }
                                         });
-
                             }
                         });
                     }
                 });
+
 
     }
 

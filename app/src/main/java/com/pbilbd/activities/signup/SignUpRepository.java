@@ -1,18 +1,16 @@
 package com.pbilbd.activities.signup;
 
 
-import android.util.Log;
-
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
 import com.pbilbd.constants.BaseConstants;
 import com.pbilbd.dto.responses.reg422error.Message;
 import com.pbilbd.dto.responses.reg422error.Reg422ErrorResponse;
+import com.pbilbd.dto.responses.regresponse.RegistrationResponse;
 import com.pbilbd.network.NetworkClient;
 import com.pbilbd.network.NetworkInterface;
-
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -41,26 +39,18 @@ public class SignUpRepository {
     //Network Call
     private void registerUser(HashMap<String, String> registerParams){
 
-        Call<JSONObject> registerCall = networkInterface.registerUser(registerParams);
+        Call<RegistrationResponse> registerCall = networkInterface.registerUser(registerParams);
 
-        registerCall.enqueue(new Callback<JSONObject>() {
+        registerCall.enqueue(new Callback<RegistrationResponse>() {
             @Override
-            public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
-
-                Log.e("Code", String.valueOf(response.code()));
+            public void onResponse(@NonNull Call<RegistrationResponse> call, @NonNull Response<RegistrationResponse> response) {
                 if (response.code() == 200){
-                    try {
-                        JSONObject responseJSON = new JSONObject(String.valueOf(response.body()));
-                        String responseMessage = responseJSON.getString("message");
-                        if (responseMessage != null && !responseMessage.isEmpty()){
-                            errorsLiveData.postValue(response.code());
-                            responseMessageLiveData.postValue(responseMessage);
-                        }else {
-                            errorsLiveData.postValue(response.code());
-                            responseMessageLiveData.postValue("Registration successful");
-                        }
-                    } catch (Exception e) {
-                        errorsLiveData.postValue(BaseConstants.UNKNOWN_ERROR);
+                    if (response.body().getMessage() != null){
+                        errorsLiveData.postValue(response.code());
+                        responseMessageLiveData.postValue(response.body().getMessage());
+                    }else {
+                        errorsLiveData.postValue(response.code());
+                        responseMessageLiveData.postValue("Registration successful.");
                     }
                 }else if (response.code() == 422){
                     Gson gson = new Gson();
@@ -69,7 +59,6 @@ public class SignUpRepository {
                         errorResponseLiveData.postValue(reg422Response.getMessage());
                         errorsLiveData.postValue(response.code());
                     } catch (IOException ioException) {
-                        //ioException.printStackTrace();
                         errorsLiveData.postValue(BaseConstants.UNKNOWN_ERROR);
                     }
                 }else {
@@ -77,9 +66,8 @@ public class SignUpRepository {
                 }
 
             }
-
             @Override
-            public void onFailure(Call<JSONObject> call, Throwable t) {
+            public void onFailure(@NonNull Call<RegistrationResponse> call, @NonNull Throwable t) {
                 errorsLiveData.postValue(BaseConstants.FAILURE_ERROR);
             }
         });

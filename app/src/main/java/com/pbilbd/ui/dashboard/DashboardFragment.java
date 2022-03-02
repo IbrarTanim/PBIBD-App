@@ -1,5 +1,6 @@
 package com.pbilbd.ui.dashboard;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,11 +13,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.pbilbd.databinding.FragmentDashboardBinding;
+import com.pbilbd.utils.SharedPreffManager;
 
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
+    private SharedPreffManager sharedPreffManager;
+    private Context context;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -24,6 +28,10 @@ public class DashboardFragment extends Fragment {
                 new ViewModelProvider(this).get(DashboardViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
+
+        sharedPreffManager =
+                new SharedPreffManager(context);
+        Log.e("Access Token", sharedPreffManager.getString("ACCESS_TOKEN"));
 
         //init views
         clickHandles();
@@ -116,6 +124,12 @@ public class DashboardFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override

@@ -1,22 +1,29 @@
 package com.pbilbd.activities.signin;
 
-import android.content.Context;
-
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.pbilbd.dto.responses.loginresponse.LoginResponse;
 
 public class SignInViewModel extends ViewModel {
 
     private SignInRepository repository;
-    private LiveData<Integer> errorLiveData;
 
-    public void initViewModel(Context context) {
-        repository = new SignInRepository(context);
-        errorLiveData = new MutableLiveData<>();
+    public void initViewModel(String userId, String password) {
+        repository = new SignInRepository(userId, password);
     }
 
-    public LiveData<Integer> getErrorLiveData() {
+    public MutableLiveData<Integer> getErrorLiveData() {
         return repository.getErrorLiveData();
     }
+
+    public MutableLiveData<LoginResponse> getLoginResponseLiveData() {
+        return repository.getLoginResponseLiveData();
+    }
+
+    public MutableLiveData<String> getError401LiveData() {
+        return repository.getError401LiveData();
+    }
+
+
 }
