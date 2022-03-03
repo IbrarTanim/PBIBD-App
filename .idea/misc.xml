@@ -5,12 +5,14 @@
       <map>
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/drawable/box_stroke_selector.xml" value="0.3828125" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/drawable/ic_menu_camera.xml" value="0.3828125" />
+        <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/drawable/pbi_bkash.xml" value="0.3828125" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/drawable/phone_picker_background.xml" value="0.3828125" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/drawable/side_nav_bar.xml" value="0.3671875" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/activity_sign_in.xml" value="0.35104166666666664" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/activity_splash.xml" value="0.35104166666666664" />
+        <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/add_shopping_point_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/app_bar_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/dialog_loader.xml" value="0.36666666666666664" />
@@ -19,6 +21,8 @@
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/nav_header_main.xml" value="0.35104166666666664" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/online_conference_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/shopping_point_recharge_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/shopping_point_transaction_fragment.xml" value="0.35260416666666666" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/layout/update_k_y_c_fragment.xml" value="0.28687856560717195" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Touhid Workbench/OfficeWorkRemote/PBIBD/app/src/main/res/menu/main.xml" value="0.35104166666666664" />
