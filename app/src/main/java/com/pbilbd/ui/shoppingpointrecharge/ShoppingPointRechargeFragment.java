@@ -32,7 +32,7 @@ public class ShoppingPointRechargeFragment extends Fragment {
         binding.viewPager.setAdapter(adapter);
 
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> {
-            String titles[] = new String[]{"Recharge", "Transaction"};
+            String titles[] = new String[]{"Transaction", "Recharge"};
             tab.setText(titles[position]);
             binding.viewPager.setCurrentItem(position);
         }).attach();
