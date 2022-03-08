@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKeys;
 
+import com.pbilbd.constants.BaseConstants;
+
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
@@ -43,8 +45,8 @@ public class SharedPreffManager {
 
     public String getString(String key){
         if (sharedPreferences != null){
-            return sharedPreferences.getString(key, "NOT_FOUND");
+            return sharedPreferences.getString(key, BaseConstants.PREFF_ERROR);
         }
-        return "NOT_FOUND";
+        return BaseConstants.PREFF_ERROR;
     }
 }

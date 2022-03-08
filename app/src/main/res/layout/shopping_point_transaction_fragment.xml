@@ -58,7 +58,7 @@
                 android:textStyle="bold"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_crnt_balance"
+                android:id="@+id/tv_crnt_shopping_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/three"
@@ -111,6 +111,7 @@
             android:text="10/30/2028" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_start_date"
             android:layout_width="@dimen/forty"
             android:layout_height="@dimen/forty"
             android:layout_centerVertical="true"
@@ -163,6 +164,7 @@
             android:text="10/30/2028" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_end_date"
             android:layout_width="@dimen/forty"
             android:layout_height="@dimen/forty"
             android:layout_centerVertical="true"
@@ -334,7 +336,8 @@
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:paddingTop="@dimen/five"
-                android:paddingBottom="@dimen/five"/>
+                android:paddingBottom="@dimen/five"
+                android:visibility="gone"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_all_transaction"
@@ -342,6 +345,7 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
+
     </HorizontalScrollView>
 
 

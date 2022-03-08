@@ -24,4 +24,14 @@ public class BaseConstants {
 
     public static String ERROR_UNKNOWN = "Please try again later";
 
+    public static String ERROR_UNAUTHORIZED = "Your session has expired, please login again";
+
+    /**
+     * Access
+     * Stuff
+     * */
+    public static String ACCESS_TOKEN = "ACCESS_TOKEN";
+
+    public static String PREFF_ERROR = "NOT_FOUND";
+
 }

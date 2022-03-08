@@ -147,7 +147,7 @@ public class SignInActivity extends AppCompatActivity {
                                                                 @Override
                                                                 public void onChanged(LoginResponse loginResponse) {
                                                                     if (loginResponse != null) {
-                                                                        sharedPreffManager.saveString("ACCESS_TOKEN", loginResponse.getToken());
+                                                                        sharedPreffManager.saveString(BaseConstants.ACCESS_TOKEN, loginResponse.getToken());
                                                                     }
                                                                 }
                                                             });
