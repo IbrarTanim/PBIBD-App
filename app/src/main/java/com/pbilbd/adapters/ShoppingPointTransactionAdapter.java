@@ -13,6 +13,11 @@ import com.google.android.material.textview.MaterialTextView;
 import com.pbilbd.R;
 import com.pbilbd.dto.responses.shoppingpointtransactions.Datum;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class ShoppingPointTransactionAdapter extends PagedListAdapter<Datum, ShoppingPointTransactionAdapter.TransactionViewHolder> {
 
     private static DiffUtil.ItemCallback<Datum> DIFF_CALLBACK = new DiffUtil.ItemCallback<Datum>() {
@@ -45,12 +50,36 @@ public class ShoppingPointTransactionAdapter extends PagedListAdapter<Datum, Sho
 
         if (datum != null){
 
-            holder.rowTvPaymentMethod.setText(datum.getPaymentMethod().getName());
-            holder.rowTvSentFrom.setText(datum.getSentFrom());
-            holder.rowTvTrxId.setText(datum.getTrxid());
-            holder.rowTvAmount.setText(datum.getAmount());
-            holder.rowTvDate.setText(datum.getCreatedAt());
-            holder.rowTvAction.setText(String.valueOf(datum.getStatus()));
+            if (datum.getPaymentMethod().getName() != null){
+                holder.rowTvPaymentMethod.setText(datum.getPaymentMethod().getName());
+            }
+            if (datum.getSentFrom() != null){
+                holder.rowTvSentFrom.setText(datum.getSentFrom());
+            }
+            if (datum.getTrxid() != null){
+                holder.rowTvTrxId.setText(datum.getTrxid());
+            }
+            if (datum.getAmount() != null){
+                holder.rowTvAmount.setText(datum.getAmount());
+            }
+            if (datum.getCreatedAt() != null){
+                String fetchedDate  = datum.getCreatedAt();
+                DateFormat databaseFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
+                DateFormat myFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                try {
+                    Date databaseFormattedDate = databaseFormatter.parse(fetchedDate);
+                    holder.rowTvDate.setText(myFormatter.format(databaseFormattedDate));
+                } catch (Exception e) {
+                    holder.rowTvDate.setText(fetchedDate);
+                }
+            }
+            if (datum.getStatus() != null){
+                if (datum.getStatus().equals("0")){
+                    holder.rowTvAction.setText("Pending");
+                }else if (datum.getStatus().equals("1")){
+                    holder.rowTvAction.setText("Approved");
+                }
+            }
 
         }
 

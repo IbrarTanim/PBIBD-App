@@ -16,7 +16,7 @@ import com.pbilbd.databinding.ShoppingPointRechargeFragmentBinding;
 
 public class ShoppingPointRechargeFragment extends Fragment {
 
-    private ShoppingPointRechargeViewModel mViewModel;
+
     private Context context;
     private ShoppingPointRechargeFragmentBinding binding;
 
@@ -25,8 +25,6 @@ public class ShoppingPointRechargeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = ShoppingPointRechargeFragmentBinding.inflate(inflater, container, false);
-
-
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         binding.viewPager.setAdapter(adapter);

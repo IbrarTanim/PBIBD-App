@@ -9,17 +9,21 @@ import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
 import com.pbilbd.dto.responses.shoppingpointtransactions.Datum;
+import com.pbilbd.dto.responses.shoppingpointtransactions.ShoppingPointTransactionsResponse;
 import com.pbilbd.utils.ExecutorServices;
 
 public class ShoppingPointTransactionViewModel extends ViewModel {
 
     private LiveData<PagedList<Datum>> transactionListLiveData;
     private MutableLiveData<TransactionsDataSource> dataSourceLiveData;
+    private MutableLiveData<ShoppingPointTransactionsResponse> allTransactionsResponseLive = new MutableLiveData<>();
+    private MutableLiveData<Integer> errorLiveData = new MutableLiveData<>();
+    private TransactionDataSourceFactory factory;
 
 
-    public void getTransactions(Context context) {
+    public void getTransactions(Context context, String startDate, String endDate) {
 
-        TransactionDataSourceFactory factory = new TransactionDataSourceFactory(context);
+        factory = new TransactionDataSourceFactory(context, startDate, endDate);
 
         dataSourceLiveData = factory.getSourceMutableLiveData();
 
@@ -38,4 +42,11 @@ public class ShoppingPointTransactionViewModel extends ViewModel {
         return transactionListLiveData;
     }
 
+    public MutableLiveData<ShoppingPointTransactionsResponse> getAllTransactionsResponseLive() {
+        return factory.getAllTransactionsResponseLive();
+    }
+
+    public MutableLiveData<Integer> getErrorLiveData() {
+        return factory.getErrorLiveData();
+    }
 }

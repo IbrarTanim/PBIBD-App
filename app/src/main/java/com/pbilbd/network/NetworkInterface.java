@@ -35,5 +35,5 @@ public interface NetworkInterface {
      * Api
      * */
     @POST("wallet-recharge")
-    Call<ShoppingPointTransactionsResponse> getShoppingPointTransactions(@Header("Authorization") String accessToken, @Query("page") int pageNumber);
+    Call<ShoppingPointTransactionsResponse> getShoppingPointTransactions(@Header("Authorization") String accessToken, @Query("start_date") String startDate, @Query("end_date") String endDate, @Query("page") int pageNumber);
 }

@@ -1,210 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.shoppingpointrecharge.recharge.AddShoppingPointFragment">
 
-    <RadioGroup
-        android:id="@+id/recharge_account_radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/ten"
-        android:layout_marginEnd="@dimen/ten"
-        android:layout_marginTop="@dimen/ten">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:textAlignment="center"
-            android:textStyle="bold"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:textAlignment="center"
-            android:textStyle="bold"/>
-
-    </RadioGroup>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/zero"
-        android:layout_height="100dp"
-        app:layout_constraintStart_toEndOf="@+id/recharge_account_radio_group"
-        app:layout_constraintTop_toTopOf="@+id/recharge_account_radio_group"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/ten">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/bkash_merchant_image"
-            android:layout_width="@dimen/one_hundred_twenty"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/pbi_bkash"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="@dimen/zero"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@+id/bkash_merchant_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="BKASH Merchant Account Number: 01744170025"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:layout_marginStart="@dimen/ten"
-            android:layout_marginEnd="@dimen/ten"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/zero"
-        android:layout_height="100dp"
-        app:layout_constraintStart_toEndOf="@+id/recharge_account_radio_group"
-        app:layout_constraintBottom_toBottomOf="@+id/recharge_account_radio_group"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/ten">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/dbbl_merchant_image"
-            android:layout_width="@dimen/one_hundred_twenty"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/pbi_dbbl_png" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="@dimen/zero"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@+id/dbbl_merchant_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="DBBL Merchant Account Number: 01744170025"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:layout_marginStart="@dimen/ten"
-            android:layout_marginEnd="@dimen/ten"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/sent_from_layout"
-        style="@style/TextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/ten"
-        android:layout_marginTop="@dimen/twenty"
-        android:layout_marginEnd="@dimen/ten"
-        android:hint="Sent From Ex. 01***"
-        app:endIconMode="clear_text"
-        app:layout_constraintTop_toBottomOf="@+id/recharge_account_radio_group">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_payment_method"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sent_from_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/ten"
+            android:hint="Sent From Ex. 01***"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/rv_payment_method">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/transaction_screenshot_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/ten"
-        android:layout_marginTop="@dimen/ten"
-        android:layout_marginEnd="@dimen/ten"
-        android:text="Screenshot/Image of Transaction"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sent_from_layout"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
 
-    <LinearLayout
-        android:id="@+id/transaction_screenshot_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/ten"
-        android:layout_marginTop="@dimen/three"
-        android:layout_marginEnd="@dimen/ten"
-        android:background="@drawable/box_stroke_selector"
-        android:orientation="horizontal"
-        android:padding="@dimen/three"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_screenshot_title">
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/transaction_screenshot_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/ten"
+            android:text="Screenshot/Image of Transaction"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sent_from_layout"/>
+
+        <LinearLayout
+            android:id="@+id/transaction_screenshot_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginTop="@dimen/three"
+            android:layout_marginEnd="@dimen/ten"
+            android:background="@drawable/box_stroke_selector"
+            android:orientation="horizontal"
+            android:padding="@dimen/three"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_screenshot_title">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_choose_file"
+                style="@style/ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/five"
+                android:layout_marginEnd="@dimen/ten"
+                android:text="Choose File" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_file_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="No File Selected" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/transaction_id_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/ten"
+            android:hint="Transaction ID"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_screenshot_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/amount_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/ten"
+            android:hint="Amount"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_id_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/save_shopping_point_btn"
             style="@style/ButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/two_hundred"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="@dimen/five"
-            android:layout_marginEnd="@dimen/ten"
-            android:text="Choose File" />
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/twenty"
+            android:text="Save Shopping Point"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/amount_layout" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="No File Selected" />
-
-    </LinearLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/transaction_id_layout"
-        style="@style/TextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/ten"
-        android:layout_marginTop="@dimen/ten"
-        android:layout_marginEnd="@dimen/ten"
-        android:hint="Transaction ID"
-        app:endIconMode="clear_text"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_screenshot_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="@dimen/forty"
+            android:background="@color/transparent"
+            app:layout_constraintTop_toBottomOf="@+id/save_shopping_point_btn"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/amount_layout"
-        style="@style/TextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/ten"
-        android:layout_marginTop="@dimen/ten"
-        android:layout_marginEnd="@dimen/ten"
-        android:hint="Amount"
-        app:endIconMode="clear_text"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_id_layout">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/save_shopping_point_btn"
-        style="@style/ButtonStyle"
-        android:layout_width="@dimen/two_hundred"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/twenty"
-        android:layout_marginBottom="@dimen/twenty"
-        android:text="Save Shopping Point"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amount_layout" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -11,6 +11,8 @@ public class BaseConstants {
      */
     public static String DEV_BASE_URL = "http://pvely.com/api/v1/";
 
+    public static String DEV_IMAGE_FETCH_URL = "http://pvely.com/";
+
 
     /**
      * Errors
