@@ -36,4 +36,12 @@ public class BaseConstants {
 
     public static String PREFF_ERROR = "NOT_FOUND";
 
+    /**
+     * Default
+     * Values
+     * */
+    public static String TRANSACTION_ZERO = "Pending";
+
+    public static String TRANSACTION_ONE = "Paid";
+
 }

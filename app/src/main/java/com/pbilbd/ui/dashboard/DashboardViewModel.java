@@ -1,19 +1,29 @@
 package com.pbilbd.ui.dashboard;
 
-import androidx.lifecycle.LiveData;
+import android.content.Context;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.pbilbd.dto.responses.dashboard.DashboardResponse;
+
 public class DashboardViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    DashboardRepository repository;
 
-    public DashboardViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+    public void initViewModel(Context context){
+        repository = new DashboardRepository(context);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void getDashboardInfo(){
+        repository.getDashboardInfo();
+    }
+
+    public MutableLiveData<Integer> getErrorLiveData() {
+        return repository.getErrorLiveData();
+    }
+
+    public MutableLiveData<DashboardResponse> getResponseLiveData() {
+        return repository.getResponseLiveData();
     }
 }

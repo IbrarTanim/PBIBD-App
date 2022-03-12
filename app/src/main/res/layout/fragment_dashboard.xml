@@ -8,8 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/ten">
+        android:layout_height="match_parent">
 
         <!--**********************************************************************-->
 
@@ -61,6 +60,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/dash_tv_warning_kyc_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -70,7 +70,8 @@
                     android:text="Update KYC to activate your account."
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:visibility="gone"/>
 
 
             </LinearLayout>
@@ -528,7 +529,7 @@
         <!--**********************************************************************-->
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/dash_pbc_point"
+            android:id="@+id/dash_social_work_point"
             android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/ten"
@@ -537,6 +538,63 @@
             app:layout_constraintEnd_toStartOf="@+id/vertical_guide"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dash_affiliate_point">
+
+            <LinearLayout
+                android:id="@+id/dash_social_work_point_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pbi_user"
+                    app:tint="@color/primaryDarkColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="Social Work Point"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:padding="@dimen/seven"
+                    android:text="0/="
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/primaryColor" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--**********************************************************************-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dash_pbc_point"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@+id/dash_shopping_point">
 
             <LinearLayout
                 android:id="@+id/dash_pbc_point_inner"
@@ -596,63 +654,6 @@
         <!--**********************************************************************-->
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/dash_social_work_point"
-            android:layout_width="@dimen/zero"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/ten"
-            app:cardCornerRadius="@dimen/seven"
-            app:cardElevation="@dimen/seven"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/vertical_guide"
-            app:layout_constraintTop_toBottomOf="@+id/dash_shopping_point">
-
-            <LinearLayout
-                android:id="@+id/dash_social_work_point_inner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="@dimen/ten">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/pbi_user"
-                    app:tint="@color/primaryDarkColor" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/ten"
-                    android:text="Social Work Point"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:textColor="@color/primaryColor"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/ten"
-                    android:padding="@dimen/seven"
-                    android:text="0/="
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                    android:textColor="@color/primaryColor" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!--**********************************************************************-->
-
-        <com.google.android.material.card.MaterialCardView
             android:id="@+id/dash_buy_product_shopping"
             android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
@@ -661,7 +662,7 @@
             app:cardElevation="@dimen/seven"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guide"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dash_pbc_point">
+            app:layout_constraintTop_toBottomOf="@+id/dash_social_work_point">
 
             <LinearLayout
                 android:id="@+id/dash_buy_product_shopping_inner"
@@ -697,6 +698,14 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!--**********************************************************************-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sixty"
+            android:background="@color/transparent"
+            app:layout_constraintTop_toBottomOf="@+id/dash_buy_product_shopping"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

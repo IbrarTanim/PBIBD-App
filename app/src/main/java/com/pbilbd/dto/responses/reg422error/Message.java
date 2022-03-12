@@ -9,8 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 
-public class Message implements Parcelable
-{
+public class Message implements Parcelable {
 
     @SerializedName("email")
     @Expose
@@ -27,11 +26,14 @@ public class Message implements Parcelable
     @SerializedName("referred_by")
     @Expose
     private List<String> referredBy = null;
+    @SerializedName("trxid")
+    @Expose
+    private List<String> trxid = null;
     public final static Creator<Message> CREATOR = new Creator<Message>() {
 
 
         @SuppressWarnings({
-            "unchecked"
+                "unchecked"
         })
         public Message createFromParcel(android.os.Parcel in) {
             return new Message(in);
@@ -41,8 +43,7 @@ public class Message implements Parcelable
             return (new Message[size]);
         }
 
-    }
-    ;
+    };
 
     protected Message(android.os.Parcel in) {
         in.readList(this.email, (String.class.getClassLoader()));
@@ -50,6 +51,7 @@ public class Message implements Parcelable
         in.readList(this.phone, (String.class.getClassLoader()));
         in.readList(this.password, (String.class.getClassLoader()));
         in.readList(this.referredBy, (String.class.getClassLoader()));
+        in.readList(this.trxid, (String.class.getClassLoader()));
     }
 
     public Message() {
@@ -95,16 +97,25 @@ public class Message implements Parcelable
         this.referredBy = referredBy;
     }
 
+    public List<String> getTrxid() {
+        return trxid;
+    }
+
+    public void setTrxid(List<String> trxid) {
+        this.trxid = trxid;
+    }
+
     public void writeToParcel(android.os.Parcel dest, int flags) {
         dest.writeList(email);
         dest.writeList(username);
         dest.writeList(phone);
         dest.writeList(password);
         dest.writeList(referredBy);
+        dest.writeList(trxid);
     }
 
     public int describeContents() {
-        return  0;
+        return 0;
     }
 
 }

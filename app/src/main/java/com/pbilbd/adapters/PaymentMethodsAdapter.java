@@ -51,16 +51,21 @@ public class PaymentMethodsAdapter extends RecyclerView.Adapter<PaymentMethodsAd
                 holder.btnSelectedMethod.setChecked(false);
             }
 
-            holder.tvMethodName.setText(methodEntities.get(position).getMethodName());
-            holder.tvMethodAccount.setText(methodEntities.get(position).getMethodAccount());
-
-            String methodLogoURL = BaseConstants.DEV_IMAGE_FETCH_URL + methodEntities.get(position).getMethodLogo();
-            Glide.with(context)
-                    .load(methodLogoURL)
-                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                    .thumbnail(0.5f)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(holder.methodIV);
+            if (methodEntities.get(position).getMethodName() != null){
+                holder.tvMethodName.setText(methodEntities.get(position).getMethodName());
+            }
+            if (methodEntities.get(position).getMethodAccount() != null){
+                holder.tvMethodAccount.setText(methodEntities.get(position).getMethodAccount());
+            }
+            if (methodEntities.get(position).getMethodLogo() != null){
+                String methodLogoURL = BaseConstants.DEV_IMAGE_FETCH_URL + methodEntities.get(position).getMethodLogo();
+                Glide.with(context)
+                        .load(methodLogoURL)
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .thumbnail(0.5f)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(holder.methodIV);
+            }
         }
     }
 

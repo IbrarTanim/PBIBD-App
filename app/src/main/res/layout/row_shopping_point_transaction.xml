@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:id="@+id/main_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -17,43 +19,59 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="11sp"/>
+            android:textSize="11sp"
+            android:textStyle="bold"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/row_tv_sent_from"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="11sp"/>
+            android:textSize="11sp"
+            android:textStyle="bold"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/row_tv_trx_id"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="11sp"/>
+            android:textSize="11sp"
+            android:textStyle="bold"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/row_tv_amount"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="11sp"/>
+            android:textSize="11sp"
+            android:textStyle="bold"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/row_tv_date"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="11sp"/>
+            android:textSize="11sp"
+            android:textStyle="bold"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/row_tv_action"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="11sp"/>
+            android:textSize="11sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one"
+        android:background="@color/black"
+        android:layout_marginTop="@dimen/five"
+        android:layout_marginBottom="@dimen/five"
+        app:layout_constraintTop_toBottomOf="@+id/main_row"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</LinearLayout>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.pbilbd.R;
+import com.pbilbd.constants.BaseConstants;
 import com.pbilbd.dto.responses.shoppingpointtransactions.Datum;
 
 import java.text.DateFormat;
@@ -75,9 +76,9 @@ public class ShoppingPointTransactionAdapter extends PagedListAdapter<Datum, Sho
             }
             if (datum.getStatus() != null){
                 if (datum.getStatus().equals("0")){
-                    holder.rowTvAction.setText("Pending");
+                    holder.rowTvAction.setText(BaseConstants.TRANSACTION_ZERO);
                 }else if (datum.getStatus().equals("1")){
-                    holder.rowTvAction.setText("Approved");
+                    holder.rowTvAction.setText(BaseConstants.TRANSACTION_ONE);
                 }
             }
 

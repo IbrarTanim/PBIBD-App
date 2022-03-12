@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,9 +30,16 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+import com.pbilbd.R;
 import com.pbilbd.adapters.PaymentMethodsAdapter;
 import com.pbilbd.cache.PaymentMethodEntity;
+import com.pbilbd.constants.BaseConstants;
 import com.pbilbd.databinding.AddShoppingPointFragmentBinding;
+import com.pbilbd.utils.ExecutorServices;
+import com.pbilbd.utils.ProgressDialog;
 import com.pbilbd.utils.RecyclerClickItem;
 
 import java.io.File;
@@ -49,6 +58,7 @@ public class AddShoppingPointFragment extends Fragment {
     private AddShoppingPointFragmentBinding binding;
     private Context context;
     private int selectedPaymentMethodID = -1;
+    private String FILE_PATH;
     private PaymentMethodsAdapter adapter;
 
     private ActivityResultLauncher<String[]> commonResultLauncher;
@@ -57,17 +67,41 @@ public class AddShoppingPointFragment extends Fragment {
     private Bitmap photo;
     private FileOutputStream fileOutputStream;
 
+    private AwesomeValidation awesomeValidation;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = AddShoppingPointFragmentBinding.inflate(inflater, container, false);
+        binding =
+                AddShoppingPointFragmentBinding.inflate(inflater, container, false);
         mViewModel =
                 new ViewModelProvider(this).get(AddShoppingPointViewModel.class);
+        awesomeValidation =
+                new AwesomeValidation(ValidationStyle.TEXT_INPUT_LAYOUT);
+
+        initialize();
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String phoneRegex = ".{11,}";
+        awesomeValidation.addValidation(getActivity(), binding.sentFromLayout.getId(), RegexTemplate.NOT_EMPTY, R.string.warning_empty);
+        awesomeValidation.addValidation(getActivity(), binding.sentFromLayout.getId(), phoneRegex, R.string.warning_phone);
+        awesomeValidation.addValidation(getActivity(), binding.transactionIdLayout.getId(), RegexTemplate.NOT_EMPTY, R.string.warning_empty);
+        awesomeValidation.addValidation(getActivity(), binding.amountLayout.getId(), RegexTemplate.NOT_EMPTY, R.string.warning_empty);
+    }
+
+    private void initialize() {
+
+        //get payment methods
         mViewModel.initViewModel(context);
         mViewModel.getAllPaymentMethods().observe(getViewLifecycleOwner(), new Observer<List<PaymentMethodEntity>>() {
             @Override
             public void onChanged(List<PaymentMethodEntity> paymentMethodEntities) {
-                if (paymentMethodEntities != null){
+                if (paymentMethodEntities != null) {
                     adapter = new PaymentMethodsAdapter(context, paymentMethodEntities, new RecyclerClickItem() {
                         @Override
                         public void onItemClick(View view, int position) {
@@ -82,6 +116,7 @@ public class AddShoppingPointFragment extends Fragment {
             }
         });
 
+        //initialize result launchers
         commonResultLauncher = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
             @Override
             public void onActivityResult(Map<String, Boolean> result) {
@@ -99,13 +134,7 @@ public class AddShoppingPointFragment extends Fragment {
             }
         });
 
-        initialize();
-
-        return binding.getRoot();
-    }
-
-    private void initialize() {
-
+        //choose transaction file
         binding.btnChooseFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +142,99 @@ public class AddShoppingPointFragment extends Fragment {
             }
         });
 
+        //save shopping point
+        binding.saveShoppingPointBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (awesomeValidation.validate()) {
+                    if (selectedPaymentMethodID != -1) {
+                        //check amount > 500 or not
+                        String amount = String.valueOf(binding.amountLayout.getEditText().getText());
+                        if (!amount.isEmpty()) {
+                            int amountInt = Integer.parseInt(amount);
+                            if (amountInt < 500) {
+                                Toasty.warning(context, "Minimum recharge amount limit : 500/= BDT.").show();
+                            } else {
+                                if (FILE_PATH != null && !FILE_PATH.isEmpty()) {
+                                    saveShoppingPoint(selectedPaymentMethodID,
+                                            binding.sentFromLayout.getEditText().getText().toString(),
+                                            binding.transactionIdLayout.getEditText().getText().toString(),
+                                            binding.amountLayout.getEditText().getText().toString(),
+                                            FILE_PATH);
+                                } else {
+                                    saveShoppingPoint(selectedPaymentMethodID,
+                                            binding.sentFromLayout.getEditText().getText().toString(),
+                                            binding.transactionIdLayout.getEditText().getText().toString(),
+                                            binding.amountLayout.getEditText().getText().toString(),
+                                            null);
+                                }
+                            }
+                        }
+                    } else {
+                        Toasty.warning(context, "Please select payment method.").show();
+                    }
+                }
+            }
+        });
+
+    }
+
+    private void saveShoppingPoint(int paymentMethodId,
+                                   String sentFrom,
+                                   String trxId,
+                                   String amount,
+                                   String fileName) {
+
+        ProgressDialog.show(context);
+        ExecutorServices.getExecutor()
+                .execute(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        mViewModel.saveShoppingPoint(paymentMethodId, sentFrom, trxId, amount, fileName);
+
+                        new Handler(Looper.getMainLooper())
+                                .post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mViewModel.getErrorLiveData()
+                                                .observe(getViewLifecycleOwner(), new Observer<Integer>() {
+                                                    @Override
+                                                    public void onChanged(Integer integer) {
+                                                        if (integer == 200) {
+                                                            binding.sentFromLayout.getEditText().setText("");
+                                                            binding.transactionIdLayout.getEditText().setText("");
+                                                            binding.amountLayout.getEditText().setText("");
+                                                            binding.tvFileName.setText("");
+                                                            ProgressDialog.cancel();
+                                                            mViewModel.getResponseLiveData()
+                                                                    .observe(getViewLifecycleOwner(), new Observer<String>() {
+                                                                        @Override
+                                                                        public void onChanged(String s) {
+                                                                            if (s != null) {
+                                                                                Toasty.success(context, s).show();
+                                                                            }
+                                                                        }
+                                                                    });
+                                                        } else if (integer == 401) {
+                                                            ProgressDialog.cancel();
+                                                            Toasty.warning(context, BaseConstants.ERROR_UNAUTHORIZED).show();
+                                                        } else if (integer == 422) {
+                                                            ProgressDialog.cancel();
+                                                            Toasty.warning(context, "Value already taken.").show();
+                                                        } else if (integer == BaseConstants.FAILURE_ERROR) {
+                                                            ProgressDialog.cancel();
+                                                            Toasty.warning(context, BaseConstants.FAILURE_ERROR).show();
+                                                        } else {
+                                                            ProgressDialog.cancel();
+                                                            Toasty.warning(context, BaseConstants.ERROR_UNKNOWN).show();
+                                                        }
+                                                    }
+                                                });
+                                    }
+                                });
+                    }
+                });
     }
 
 
@@ -129,10 +251,23 @@ public class AddShoppingPointFragment extends Fragment {
                 commonResultLauncher.launch(trackerPerms);
             }
         } else {
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            intent.setType("image/*");
-            galleryResultLauncher.launch(intent);
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED
+                    || ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
+                    || ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
+                    || ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_MEDIA_LOCATION) == PackageManager.PERMISSION_DENIED) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    String[] trackerPerms = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_MEDIA_LOCATION, Manifest.permission.CAMERA};
+                    commonResultLauncher.launch(trackerPerms);
+                } else {
+                    String[] trackerPerms = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
+                    commonResultLauncher.launch(trackerPerms);
+                }
+            } else {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                galleryResultLauncher.launch(intent);
+            }
         }
     }
 
@@ -163,10 +298,10 @@ public class AddShoppingPointFragment extends Fragment {
                 e.printStackTrace();
             }
 
-            String filePath = file.getPath();
+            FILE_PATH = file.getPath();
 
-            if (filePath != null){
-                binding.tvFileName.setText(filePath);
+            if (FILE_PATH != null && !FILE_PATH.isEmpty()) {
+                binding.tvFileName.setText(FILE_PATH);
             }
 
         } else {
