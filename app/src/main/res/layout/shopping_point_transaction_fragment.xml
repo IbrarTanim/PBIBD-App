@@ -1,261 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layoutDescription="@xml/shopping_point_transaction_fragment_scene"
     tools:context=".ui.shoppingpointrecharge.transaction.ShoppingPointTransactionFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/vertical_guide"
-        android:layout_width="@dimen/one"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
-
-    <!--Shopping Point Balance-->
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_crnt_balance"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/ten"
-        android:layout_marginEnd="@dimen/ten"
-        android:layout_marginTop="@dimen/twenty"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="@dimen/seven"
-        app:cardElevation="@dimen/seven">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guide"
+            android:layout_width="@dimen/one"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <!--Shopping Point Balance-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_crnt_balance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/ten"
+            app:cardCornerRadius="@dimen/seven"
+            app:cardElevation="@dimen/seven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/five"
+                android:paddingTop="@dimen/ten"
+                android:paddingEnd="@dimen/five"
+                android:paddingBottom="@dimen/ten">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shopping Point Balance"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/three"
+                    android:layout_marginEnd="@dimen/three"
+                    android:text=":"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_crnt_shopping_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/three"
+                    android:layout_marginEnd="@dimen/three"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!--Start Date Layout-->
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/start_date_layout_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/twenty"
+            android:text="Start Date"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/start_date_layout"
+            app:layout_constraintTop_toBottomOf="@+id/cv_crnt_balance" />
+
+        <RelativeLayout
+            android:id="@+id/start_date_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/three"
+            android:layout_marginEnd="@dimen/five"
+            android:background="@drawable/box_stroke_selector"
             android:orientation="horizontal"
+            android:padding="@dimen/three"
+            app:layout_constraintEnd_toEndOf="@+id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@+id/start_date_layout_title">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_start_date"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_start_date"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/forty"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five"
+                android:layout_marginEnd="@dimen/five"
+                android:layout_toEndOf="@+id/tv_start_date"
+                android:background="?selectableItemBackground"
+                android:padding="@dimen/five"
+                android:src="@drawable/pbi_calender" />
+
+        </RelativeLayout>
+
+
+        <!--End Date Layout-->
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/end_date_layout_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/three"
+            android:text="End Date"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/end_date_layout"
+            app:layout_constraintStart_toStartOf="@+id/end_date_layout" />
+
+        <RelativeLayout
+            android:id="@+id/end_date_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:background="@drawable/box_stroke_selector"
+            android:orientation="horizontal"
+            android:padding="@dimen/three"
+            app:layout_constraintBottom_toBottomOf="@id/start_date_layout"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guide"
+            app:layout_constraintTop_toTopOf="@+id/start_date_layout">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_end_date"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_end_date"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/forty"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five"
+                android:layout_marginEnd="@dimen/five"
+                android:layout_toEndOf="@+id/tv_end_date"
+                android:background="?selectableItemBackground"
+                android:padding="@dimen/five"
+                android:src="@drawable/pbi_calender" />
+
+        </RelativeLayout>
+
+
+        <!--Filter and Reset Buttons-->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/filter_btn"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/five"
+            android:text="Filter"
+            app:layout_constraintEnd_toEndOf="@+id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@+id/end_date_layout" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reset_filter_btn"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:layout_marginTop="@dimen/ten"
+            android:text="Reset"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@+id/end_date_layout" />
+
+
+        <!--Total Transaction Value-->
+        <LinearLayout
+            android:id="@+id/total_transaction_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen"
             android:gravity="center"
-            android:paddingTop="@dimen/ten"
-            android:paddingBottom="@dimen/ten"
-            android:paddingStart="@dimen/five"
-            android:paddingEnd="@dimen/five"
-            android:background="?attr/selectableItemBackground">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reset_filter_btn">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shopping Point Balance"
+                android:text="Total"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textColor="@color/black"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/three"
+                android:layout_marginEnd="@dimen/three"
                 android:text=":"
-                android:layout_marginStart="@dimen/three"
-                android:layout_marginEnd="@dimen/three"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textColor="@color/black"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_crnt_shopping_balance"
+                android:id="@+id/tv_total_transaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/three"
                 android:layout_marginEnd="@dimen/three"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textColor="@color/black"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
-
-
-    <!--Start Date Layout-->
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/start_date_layout_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/twenty"
-        android:text="Start Date"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/start_date_layout"
-        app:layout_constraintTop_toBottomOf="@+id/cv_crnt_balance" />
-
-    <RelativeLayout
-        android:id="@+id/start_date_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/three"
-        android:layout_marginEnd="@dimen/five"
-        android:background="@drawable/box_stroke_selector"
-        android:orientation="horizontal"
-        android:padding="@dimen/three"
-        app:layout_constraintTop_toBottomOf="@+id/start_date_layout_title"
-        app:layout_constraintEnd_toEndOf="@+id/vertical_guide">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_start_date"
-            android:layout_width="@dimen/eighty"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/five"
-            android:ellipsize="end"
-            android:maxLines="1"/>
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_start_date"
-            android:layout_width="@dimen/forty"
-            android:layout_height="@dimen/forty"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/five"
-            android:layout_marginStart="@dimen/five"
-            android:background="?selectableItemBackground"
-            android:padding="@dimen/five"
-            android:src="@drawable/pbi_calender"
-            android:layout_toEndOf="@+id/tv_start_date"/>
-
-    </RelativeLayout>
-
-
-    <!--End Date Layout-->
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/end_date_layout_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/three"
-        android:text="End Date"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/end_date_layout"
-        app:layout_constraintStart_toStartOf="@+id/end_date_layout"/>
-
-    <RelativeLayout
-        android:id="@+id/end_date_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/five"
-        android:background="@drawable/box_stroke_selector"
-        android:orientation="horizontal"
-        android:padding="@dimen/three"
-        app:layout_constraintStart_toStartOf="@+id/vertical_guide"
-        app:layout_constraintTop_toTopOf="@+id/start_date_layout"
-        app:layout_constraintBottom_toBottomOf="@id/start_date_layout">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_end_date"
-            android:layout_width="@dimen/eighty"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/five"
-            android:ellipsize="end"
-            android:maxLines="1"/>
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_end_date"
-            android:layout_width="@dimen/forty"
-            android:layout_height="@dimen/forty"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/five"
-            android:layout_marginStart="@dimen/five"
-            android:background="?selectableItemBackground"
-            android:padding="@dimen/five"
-            android:src="@drawable/pbi_calender"
-            android:layout_toEndOf="@+id/tv_end_date"/>
-
-    </RelativeLayout>
-
-
-    <!--Filter and Reset Buttons-->
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/filter_btn"
-        style="@style/ButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/ten"
-        android:layout_marginEnd="@dimen/five"
-        android:text="Filter"
-        app:layout_constraintTop_toBottomOf="@+id/end_date_layout"
-        app:layout_constraintEnd_toEndOf="@+id/vertical_guide"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/reset_filter_btn"
-        style="@style/ButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/ten"
-        android:layout_marginStart="@dimen/five"
-        android:text="Reset"
-        app:layout_constraintTop_toBottomOf="@+id/end_date_layout"
-        app:layout_constraintStart_toStartOf="@+id/vertical_guide"/>
-
-
-    <!--Total Transaction Value-->
-    <LinearLayout
-        android:id="@+id/total_transaction_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reset_filter_btn"
-        android:layout_marginTop="@dimen/fifteen">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total"
-            android:textColor="@color/black"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=":"
-            android:layout_marginStart="@dimen/three"
-            android:layout_marginEnd="@dimen/three"
-            android:textColor="@color/black"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_total_transaction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/three"
-            android:layout_marginEnd="@dimen/three"
-            android:textColor="@color/black"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <!--All Transaction Recycler Header-->
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/zero"
-        app:layout_constraintTop_toBottomOf="@+id/total_transaction_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="@dimen/twenty"
         android:layout_marginStart="@dimen/five"
+        android:layout_marginTop="@dimen/twenty"
         android:layout_marginEnd="@dimen/five"
         android:animateLayoutChanges="true"
-        android:scrollbars="vertical|horizontal">
+        android:scrollbars="vertical|horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_layout">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -273,79 +285,79 @@
                     android:layout_height="wrap_content"
                     android:text="Payment Method"
                     android:textColor="@color/secondaryColor"
-                    android:textStyle="bold"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="Sent From"
                     android:textColor="@color/secondaryColor"
-                    android:textStyle="bold"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="TrxId"
                     android:textColor="@color/secondaryColor"
-                    android:textStyle="bold"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="Amount"
                     android:textColor="@color/secondaryColor"
-                    android:textStyle="bold"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="Date"
                     android:textColor="@color/secondaryColor"
-                    android:textStyle="bold"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="Action"
                     android:textColor="@color/secondaryColor"
-                    android:textStyle="bold"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/one"
-                android:background="@color/secondaryColor"
                 android:layout_marginTop="@dimen/three"
-                android:layout_marginBottom="@dimen/five"/>
+                android:layout_marginBottom="@dimen/five"
+                android:background="@color/secondaryColor" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_no_records"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/red"
-                android:text="No Records Found"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textAlignment="center"
                 android:paddingTop="@dimen/five"
                 android:paddingBottom="@dimen/five"
-                android:visibility="gone"/>
+                android:text="No Records Found"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_all_transaction"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
     </HorizontalScrollView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

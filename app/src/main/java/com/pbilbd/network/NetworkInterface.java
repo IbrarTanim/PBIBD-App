@@ -3,6 +3,7 @@ package com.pbilbd.network;
 import com.pbilbd.dto.responses.dashboard.DashboardResponse;
 import com.pbilbd.dto.responses.defaultsuccess.DefaultSuccessResponse;
 import com.pbilbd.dto.responses.loginresponse.LoginResponse;
+import com.pbilbd.dto.responses.placementuser.PlacementUserResponse;
 import com.pbilbd.dto.responses.regresponse.RegistrationResponse;
 import com.pbilbd.dto.responses.shoppingpointtransactions.ShoppingPointTransactionsResponse;
 
@@ -78,4 +79,12 @@ public interface NetworkInterface {
      * */
     @POST("dashboard")
     Call<DashboardResponse> dashboardInfo(@Header("Authorization") String accessToken);
+
+    /**
+     * Placement
+     * User
+     * Search
+     * */
+    @POST("placement")
+    Call<PlacementUserResponse> searchPlacementUser(@Header("Authorization") String accessToken, @Query("username") String placementUser);
 }

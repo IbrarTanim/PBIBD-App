@@ -33,7 +33,7 @@ public class SettingsRepository {
 
     public void logout(){
 
-        String accessToken = preffManager.getString(BaseConstants.ACCESS_TOKEN);
+        String accessToken = "Bearer " + preffManager.getString(BaseConstants.ACCESS_TOKEN);
         Log.e("Logout", accessToken);
 
         Call<DefaultSuccessResponse> pojoCall = networkInterface.logout(accessToken);

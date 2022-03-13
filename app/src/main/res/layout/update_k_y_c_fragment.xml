@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ten"
-            android:background="@color/secondaryColor"
+            android:background="@color/secondaryLightColor"
             android:ellipsize="marquee"
             android:fadingEdge="horizontal"
             android:marqueeRepeatLimit="marquee_forever"
@@ -24,7 +24,8 @@
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:text="To Complete The KYC Process Your Shopping Point Must Have 2525/="
-            android:textColor="@color/black"
+            android:textColor="@color/red"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,12 +97,12 @@
             app:layout_constraintTop_toBottomOf="@+id/balance_card">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_placement_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/position_layout"
@@ -116,12 +117,12 @@
             app:layout_constraintTop_toBottomOf="@+id/placement_user_layout">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_position"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/own_fb_layout"
@@ -143,35 +144,51 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/select_user_btn"
-            style="@style/ButtonStyle"
-            android:layout_width="match_parent"
+            android:id="@+id/select_agent_btn"
+            style="@style/ButtonStyleWhite"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/twenty"
             android:layout_marginTop="@dimen/ten"
             android:layout_marginEnd="@dimen/twenty"
-            android:text="Select User"
-            app:layout_constraintTop_toBottomOf="@+id/own_fb_layout" />
-
+            android:text="Select Agent"
+            app:layout_constraintTop_toBottomOf="@+id/own_fb_layout"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/total_insurance_layout"
+            android:id="@+id/agent_name_layout"
             style="@style/TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/twenty"
-            android:layout_marginTop="@dimen/ten"
             android:layout_marginEnd="@dimen/twenty"
-            android:hint="Total Insurance"
+            android:hint="Agent Name"
             app:endIconMode="clear_text"
-            app:layout_constraintTop_toBottomOf="@+id/select_user_btn">
+            app:layout_constraintTop_toBottomOf="@+id/select_agent_btn">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/update_account_btn"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/thirty"
+            android:text="Update Account"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/agent_name_layout" />
+
+
+        <!--User Information Start-->
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/user_info_title"
@@ -186,7 +203,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total_insurance_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/update_account_btn" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/user_first_name_layout"
@@ -609,6 +626,9 @@
 
         </LinearLayout>
 
+        <!--User Information End-->
+
+        <!--Nominee Information Start-->
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/nominee_info_title"
@@ -735,6 +755,9 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--Nominee Information End-->
+
+        <!--Bank Information Start-->
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/bank_info_title"
@@ -830,6 +853,9 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--Bank Information End-->
+
+        <!--Mobile Bank Information Start-->
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mobile_bank_info_title"
@@ -886,8 +912,11 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--Mobile Bank Information End-->
 
-        <com.google.android.material.textview.MaterialTextView
+        <!--Insurance Information Start-->
+
+        <!--<com.google.android.material.textview.MaterialTextView
             android:id="@+id/insurance_info_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -967,20 +996,22 @@
                 android:maxLines="1"
                 android:text="No File Selected" />
 
-        </LinearLayout>
+        </LinearLayout>-->
+
+        <!--Insurance Information End-->
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/update_kyc_btn"
+            android:id="@+id/update_details_btn"
             style="@style/ButtonStyle"
-            android:layout_width="@dimen/two_hundred"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/twenty"
-            android:layout_marginBottom="@dimen/twenty"
-            android:text="Update"
+            android:layout_marginBottom="@dimen/thirty"
+            android:text="Update Details"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/insurance_document_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/mobile_bank_number_layout" />
 
 
         <com.google.android.material.card.MaterialCardView
@@ -994,7 +1025,7 @@
             android:padding="@dimen/ten"
             app:cardCornerRadius="@dimen/seven"
             app:cardElevation="@dimen/seven"
-            app:layout_constraintTop_toBottomOf="@+id/update_kyc_btn">
+            app:layout_constraintTop_toBottomOf="@+id/update_details_btn">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1033,7 +1064,7 @@
         <View
             android:layout_width="@dimen/one"
             android:layout_height="@dimen/one"
-            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginTop="?attr/actionBarSize"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/change_photo_layout" />
 

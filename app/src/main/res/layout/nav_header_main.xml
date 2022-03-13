@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:contentDescription="@string/nav_header_desc"
         android:src="@drawable/pbi_user_64"
-        app:civ_border_color="@color/primaryLightColor"
+        app:civ_border_color="@color/white"
         app:civ_border_width="@dimen/one"
         app:civ_circle_background_color="@color/profile_background" />
 
@@ -27,7 +27,7 @@
         android:paddingTop="@dimen/five"
         android:text="@string/nav_header_title"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:textColor="@color/secondaryTextColor"
+        android:textColor="@color/primaryTextColor"
         android:textStyle="bold" />
 
     <TextView
@@ -39,5 +39,5 @@
         android:paddingTop="@dimen/five"
         android:text="@string/nav_header_subtitle"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-        android:textColor="@color/secondaryTextColor" />
+        android:textColor="@color/primaryTextColor" />
 </LinearLayout>
