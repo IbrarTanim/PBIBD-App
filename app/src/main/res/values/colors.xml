@@ -17,6 +17,7 @@
     <color name="red">#e50000</color>
     <color name="green">#4ca64c</color>
     <color name="white">#FFFFFF</color>
+    <color name="off_white">#FAF9F6</color>
     <color name="black">#000000</color>
     <color name="transparent">#00ffffff</color>
 </resources>

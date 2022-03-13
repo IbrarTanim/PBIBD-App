@@ -7,11 +7,10 @@ import androidx.lifecycle.MutableLiveData;
 import com.pbilbd.cache.PBIRoomDatabase;
 import com.pbilbd.cache.PaymentMethodEntity;
 import com.pbilbd.constants.BaseConstants;
+import com.pbilbd.dto.responses.defaultsuccess.DefaultSuccessResponse;
 import com.pbilbd.network.NetworkClient;
 import com.pbilbd.network.NetworkInterface;
 import com.pbilbd.utils.SharedPreffManager;
-
-import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
@@ -61,7 +60,7 @@ public class AddShoppingPointRepository {
 
         String accessToken = "Bearer " + preffManager.getString(BaseConstants.ACCESS_TOKEN);
 
-        Call<JSONObject> pojoCall;
+        Call<DefaultSuccessResponse> pojoCall;
         if (fileName != null){
             File newFile = new File(fileName);
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), newFile);
@@ -72,20 +71,14 @@ public class AddShoppingPointRepository {
         }
 
         if (pojoCall != null){
-            pojoCall.enqueue(new Callback<JSONObject>() {
+            pojoCall.enqueue(new Callback<DefaultSuccessResponse>() {
                 @Override
-                public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
+                public void onResponse(Call<DefaultSuccessResponse> call, Response<DefaultSuccessResponse> response) {
                     if (response.code() == 200){
                         errorLiveData.postValue(200);
-                        responseLiveData.postValue("Your request has been sent successfully!");
-                        /*JSONObject jsonObject = response.body();
-                        try {
-                            String message = jsonObject.get("data").toString();
-                            responseLiveData.postValue(message);
-                        } catch (JSONException e) {
-                            responseLiveData.postValue(e.getMessage());
-                            Log.e("Error 2", e.getMessage());
-                        }*/
+                        if (response.body().getData() != null){
+                            responseLiveData.postValue(response.body().getData());
+                        }
                     }else if (response.code() == 401){
                         errorLiveData.postValue(401);
                     }else if(response.code() == 422){
@@ -96,7 +89,7 @@ public class AddShoppingPointRepository {
                 }
 
                 @Override
-                public void onFailure(Call<JSONObject> call, Throwable t) {
+                public void onFailure(Call<DefaultSuccessResponse> call, Throwable t) {
                     errorLiveData.postValue(BaseConstants.FAILURE_ERROR);
                 }
             });

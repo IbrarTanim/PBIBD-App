@@ -1,11 +1,10 @@
 package com.pbilbd.network;
 
 import com.pbilbd.dto.responses.dashboard.DashboardResponse;
+import com.pbilbd.dto.responses.defaultsuccess.DefaultSuccessResponse;
 import com.pbilbd.dto.responses.loginresponse.LoginResponse;
 import com.pbilbd.dto.responses.regresponse.RegistrationResponse;
 import com.pbilbd.dto.responses.shoppingpointtransactions.ShoppingPointTransactionsResponse;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -36,6 +35,12 @@ public interface NetworkInterface {
                                   @Query("password") String password);
 
     /**
+     * Logout
+     * */
+    @POST("logout")
+    Call<DefaultSuccessResponse> logout(@Header("Authorization") String accessToken);
+
+    /**
      * Shopping
      * Point
      * Transactions
@@ -54,14 +59,14 @@ public interface NetworkInterface {
      */
     @Multipart
     @POST("wallet-recharge-store")
-    Call<JSONObject> saveShoppingPoint(@Header("Authorization") String accessToken,
+    Call<DefaultSuccessResponse> saveShoppingPoint(@Header("Authorization") String accessToken,
                                        @Query("payment_method_id") int paymentMethodId,
                                        @Query("sent_from") String sentFrom,
                                        @Query("trxid") String trxId,
                                        @Query("amount") String amount,
                                        @Part MultipartBody.Part attachment);
     @POST("wallet-recharge-store")
-    Call<JSONObject> saveShoppingPoint(@Header("Authorization") String accessToken,
+    Call<DefaultSuccessResponse> saveShoppingPoint(@Header("Authorization") String accessToken,
                                        @Query("payment_method_id") int paymentMethodId,
                                        @Query("sent_from") String sentFrom,
                                        @Query("trxid") String trxId,

@@ -67,6 +67,16 @@
 
     <!--Side Menu Fragments Ends Here-->
 
+    <!--Main Menu Fragments Starts Here-->
+
+    <fragment
+        android:id="@+id/action_settings"
+        android:name="com.pbilbd.ui.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/settings_fragment"/>
+
+    <!--Main Menu Fragments Ends Here-->
+
     <!--DashBoard Fragments Starts From Here-->
 
     <fragment

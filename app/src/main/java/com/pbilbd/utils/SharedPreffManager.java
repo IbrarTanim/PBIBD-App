@@ -49,4 +49,12 @@ public class SharedPreffManager {
         }
         return BaseConstants.PREFF_ERROR;
     }
+
+    public void clearAll(){
+        if (sharedPreferences != null){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+        }
+    }
 }

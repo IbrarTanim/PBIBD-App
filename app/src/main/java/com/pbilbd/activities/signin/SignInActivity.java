@@ -3,6 +3,7 @@ package com.pbilbd.activities.signin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -148,6 +149,7 @@ public class SignInActivity extends AppCompatActivity {
                                                                 public void onChanged(LoginResponse loginResponse) {
                                                                     if (loginResponse != null) {
                                                                         sharedPreffManager.saveString(BaseConstants.ACCESS_TOKEN, loginResponse.getToken());
+                                                                        Log.e("Login", loginResponse.getToken());
                                                                     }
                                                                 }
                                                             });
