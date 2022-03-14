@@ -47,12 +47,12 @@ public class SignInActivity extends AppCompatActivity {
          * Page
          * Animation
          * */
-        new Handler().postDelayed(new Runnable() {
+        binding.signInMainLayout.post(new Runnable() {
             @Override
             public void run() {
                 binding.signInMainLayout.transitionToEnd();
             }
-        }, 300);
+        });
 
 
         activity = this;

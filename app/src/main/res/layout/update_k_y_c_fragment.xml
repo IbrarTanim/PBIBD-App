@@ -84,25 +84,57 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/placement_user_layout_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/twenty"
+            android:text="Placement user Name"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balance_card" />
+
+
+        <RelativeLayout
             android:id="@+id/placement_user_layout"
-            style="@style/TextInputDropDownLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/twenty"
-            android:layout_marginTop="@dimen/ten"
+            android:layout_marginTop="@dimen/three"
             android:layout_marginEnd="@dimen/twenty"
-            android:hint="Placement User Name"
-            app:endIconMode="dropdown_menu"
-            app:layout_constraintTop_toBottomOf="@+id/balance_card">
+            android:background="@drawable/box_stroke_selector"
+            android:orientation="horizontal"
+            android:padding="@dimen/five"
+            app:layout_constraintTop_toBottomOf="@+id/placement_user_layout_title">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/atv_placement_user_name"
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_placement_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"/>
+                android:visibility="gone"
+                android:backgroundTint="@color/secondaryColor"
+                android:layout_alignParentTop="true"
+                android:paddingStart="@dimen/two"
+                android:paddingEnd="@dimen/zero"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_placement_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:hint="Search"
+                android:paddingStart="@dimen/ten"
+                android:paddingEnd="@dimen/ten"
+                android:paddingBottom="@dimen/five"
+                android:layout_below="@+id/spinner_placement_user"/>
+
+        </RelativeLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/position_layout"
@@ -467,7 +499,7 @@
             android:layout_marginEnd="@dimen/twenty"
             android:background="@drawable/box_stroke_selector"
             android:orientation="horizontal"
-            android:padding="@dimen/three"
+            android:padding="@dimen/ten"
             app:layout_constraintTop_toBottomOf="@+id/date_birth_layout_title">
 
             <com.google.android.material.textview.MaterialTextView

@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         activity = this;
 
-        new Handler().postDelayed(new Runnable() {
+        binding.splashMainLayout.post(new Runnable() {
             @Override
             public void run() {
                 binding.splashMainLayout.transitionToEnd();
@@ -62,7 +62,7 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 });
             }
-        }, 300);
+        });
 
     }
 

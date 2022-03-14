@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.pbilbd.dto.responses.placementuser.PlacementUserResponse;
+import com.pbilbd.dto.responses.positionbyplacement.PositionByPlacementResponse;
 
 public class UpdateKYCViewModel extends ViewModel {
 
@@ -17,5 +18,9 @@ public class UpdateKYCViewModel extends ViewModel {
 
     public MutableLiveData<PlacementUserResponse> searchPlacementUser(String placementUser){
         return repository.searchPlacementUser(placementUser);
+    }
+
+    public MutableLiveData<PositionByPlacementResponse> positionByPlacement(String placementUserId){
+        return repository.positionByPlacement(placementUserId);
     }
 }

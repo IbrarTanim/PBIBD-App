@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.pbilbd.constants.BaseConstants;
 import com.pbilbd.dto.responses.placementuser.PlacementUserResponse;
+import com.pbilbd.dto.responses.positionbyplacement.PositionByPlacementResponse;
 import com.pbilbd.network.NetworkClient;
 import com.pbilbd.network.NetworkInterface;
 import com.pbilbd.utils.SharedPreffManager;
@@ -54,6 +55,35 @@ public class UpdateKYCRepository {
 
             @Override
             public void onFailure(Call<PlacementUserResponse> call, Throwable t) {
+                Toasty.warning(context, BaseConstants.ERROR_FAILURE).show();
+            }
+        });
+
+        return liveData;
+    }
+
+    public MutableLiveData<PositionByPlacementResponse> positionByPlacement(String placementUserId){
+
+        MutableLiveData<PositionByPlacementResponse> liveData = new MutableLiveData<>();
+
+        Log.e("KYC Token", ACCESS_TOKEN);
+
+        Call<PositionByPlacementResponse> pojoCall = networkInterface.positionByPlacement(ACCESS_TOKEN, placementUserId);
+
+        pojoCall.enqueue(new Callback<PositionByPlacementResponse>() {
+            @Override
+            public void onResponse(Call<PositionByPlacementResponse> call, Response<PositionByPlacementResponse> response) {
+                if (response.code() == 200){
+                    liveData.postValue(response.body());
+                }else if (response.code() == 401){
+                    Toasty.warning(context, BaseConstants.ERROR_UNAUTHORIZED).show();
+                }else {
+                    Toasty.warning(context, "No data found.").show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PositionByPlacementResponse> call, Throwable t) {
                 Toasty.warning(context, BaseConstants.ERROR_FAILURE).show();
             }
         });

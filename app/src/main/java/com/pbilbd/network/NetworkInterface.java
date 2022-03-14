@@ -4,6 +4,7 @@ import com.pbilbd.dto.responses.dashboard.DashboardResponse;
 import com.pbilbd.dto.responses.defaultsuccess.DefaultSuccessResponse;
 import com.pbilbd.dto.responses.loginresponse.LoginResponse;
 import com.pbilbd.dto.responses.placementuser.PlacementUserResponse;
+import com.pbilbd.dto.responses.positionbyplacement.PositionByPlacementResponse;
 import com.pbilbd.dto.responses.regresponse.RegistrationResponse;
 import com.pbilbd.dto.responses.shoppingpointtransactions.ShoppingPointTransactionsResponse;
 
@@ -87,4 +88,12 @@ public interface NetworkInterface {
      * */
     @POST("placement")
     Call<PlacementUserResponse> searchPlacementUser(@Header("Authorization") String accessToken, @Query("username") String placementUser);
+
+    /**
+     * Position
+     * By
+     * Placement
+     * */
+    @POST("position")
+    Call<PositionByPlacementResponse> positionByPlacement(@Header("Authorization") String accessToken, @Query("username") String placementUser);
 }

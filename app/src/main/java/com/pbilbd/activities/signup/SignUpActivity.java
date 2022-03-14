@@ -49,12 +49,12 @@ public class SignUpActivity extends AppCompatActivity {
          * Page
          * Animation
          * */
-        new Handler().postDelayed(new Runnable() {
+        binding.signUpMotionLayout.post(new Runnable() {
             @Override
             public void run() {
                 binding.signUpMotionLayout.transitionToEnd();
             }
-        }, 300);
+        });
 
     }
 
