@@ -1,12 +1,15 @@
 package com.pbilbd.network;
 
+import com.pbilbd.dto.responses.agents.AgentsResponse;
 import com.pbilbd.dto.responses.dashboard.DashboardResponse;
 import com.pbilbd.dto.responses.defaultsuccess.DefaultSuccessResponse;
+import com.pbilbd.dto.responses.getkyc.GetKYCResponse;
 import com.pbilbd.dto.responses.loginresponse.LoginResponse;
 import com.pbilbd.dto.responses.placementuser.PlacementUserResponse;
 import com.pbilbd.dto.responses.positionbyplacement.PositionByPlacementResponse;
 import com.pbilbd.dto.responses.regresponse.RegistrationResponse;
 import com.pbilbd.dto.responses.shoppingpointtransactions.ShoppingPointTransactionsResponse;
+import com.pbilbd.dto.responses.thana.ThanaResponse;
 
 import java.util.HashMap;
 
@@ -96,4 +99,28 @@ public interface NetworkInterface {
      * */
     @POST("position")
     Call<PositionByPlacementResponse> positionByPlacement(@Header("Authorization") String accessToken, @Query("username") String placementUser);
+
+    /**
+     * Get
+     * KYC
+     * Information
+     * */
+    @POST("user-kyc")
+    Call<GetKYCResponse> kycResponse(@Header("Authorization") String accessToken);
+
+    /**
+     * Get
+     * Thana
+     * List
+     * */
+    @POST("thana-agents")
+    Call<ThanaResponse> thanaList(@Header("Authorization") String accessToken, @Query("district_id") int districtId);
+
+    /**
+     * Get
+     * Agent
+     * List
+     * */
+    @POST("thana-agents")
+    Call<AgentsResponse> agentList(@Header("Authorization") String accessToken, @Query("district_id") int districtId, @Query("thana_id") int thanaId);
 }

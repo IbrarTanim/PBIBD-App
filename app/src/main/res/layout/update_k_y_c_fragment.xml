@@ -27,7 +27,8 @@
             android:textColor="@color/red"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/balance_card"
@@ -49,6 +50,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_shopping_point_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -69,6 +71,7 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_recharge_now"
                     style="@style/ButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -76,7 +79,7 @@
                     android:layout_marginTop="@dimen/ten"
                     android:layout_marginEnd="@dimen/twenty"
                     android:layout_marginBottom="@dimen/ten"
-                    android:text="@string/recharge_now_btn_warning"
+                    android:text="@string/recharge_now_btn"
                     android:textStyle="bold" />
 
 
@@ -199,9 +202,13 @@
             app:layout_constraintTop_toBottomOf="@+id/select_agent_btn">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_agent_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none|textNoSuggestions"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -350,6 +357,7 @@
             app:layout_constraintTop_toBottomOf="@+id/user_mobile_layout">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -449,6 +457,7 @@
             app:layout_constraintTop_toBottomOf="@+id/user_user_id_layout">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_blood_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -469,6 +478,7 @@
             app:layout_constraintTop_toBottomOf="@+id/blood_group_layout">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_religion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -538,6 +548,7 @@
             app:layout_constraintTop_toBottomOf="@+id/date_birth_layout">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_countires"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -918,6 +929,7 @@
             app:layout_constraintTop_toBottomOf="@+id/mobile_bank_info_title">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_mobile_banking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />

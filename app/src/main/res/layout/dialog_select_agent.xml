@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/three_hundred"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/twenty"
+    app:cardCornerRadius="@dimen/three"
+    app:cardElevation="@dimen/seven">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/twenty">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:text="Select Agent"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:background="@color/primaryColor"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/district_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Select District"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/header_layout">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/thana_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/seven"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Select Thana"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/district_layout">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_thana"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/agent_layout"
+            style="@style/TextInputDropDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_marginTop="@dimen/seven"
+            android:layout_marginEnd="@dimen/twenty"
+            android:hint="Select Agent"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@+id/thana_layout">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atv_agent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/save_agent_btn"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:text="Save"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/agent_layout" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/close_dialog_btn"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="?attr/actionBarSize"
+            android:src="@drawable/pbi_cross"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
