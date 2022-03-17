@@ -10,6 +10,9 @@ import com.pbilbd.dto.responses.getkyc.GetKYCResponse;
 import com.pbilbd.dto.responses.placementuser.PlacementUserResponse;
 import com.pbilbd.dto.responses.positionbyplacement.PositionByPlacementResponse;
 import com.pbilbd.dto.responses.thana.ThanaResponse;
+import com.pbilbd.dto.responses.updateaccount.UpdateAccountResponse;
+
+import java.util.HashMap;
 
 public class UpdateKYCViewModel extends ViewModel {
 
@@ -45,5 +48,13 @@ public class UpdateKYCViewModel extends ViewModel {
 
     public MutableLiveData<ThanaResponse> getThanaList(int districtId){
         return repository.getThanaList(districtId);
+    }
+
+    public MutableLiveData<UpdateAccountResponse> updateAccount(HashMap<String, String> params){
+        return repository.updateAccount(params);
+    }
+
+    public MutableLiveData<Integer> getErrorUpdateAccount() {
+        return repository.getErrorUpdateAccount();
     }
 }

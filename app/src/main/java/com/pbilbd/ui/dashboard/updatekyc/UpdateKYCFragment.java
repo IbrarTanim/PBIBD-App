@@ -22,6 +22,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.google.android.material.button.MaterialButton;
 import com.pbilbd.R;
 import com.pbilbd.constants.BaseConstants;
@@ -36,10 +39,12 @@ import com.pbilbd.dto.responses.placementuser.PlacementUserResponse;
 import com.pbilbd.dto.responses.positionbyplacement.PositionByPlacementResponse;
 import com.pbilbd.dto.responses.thana.Thana;
 import com.pbilbd.dto.responses.thana.ThanaResponse;
+import com.pbilbd.dto.responses.updateaccount.UpdateAccountResponse;
 import com.pbilbd.utils.ExecutorServices;
 import com.pbilbd.utils.ProgressDialog;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
@@ -49,6 +54,7 @@ public class UpdateKYCFragment extends Fragment {
     private Context context;
     private UpdateKYCViewModel viewModel;
     private UpdateKYCFragmentBinding binding;
+    private AwesomeValidation accountValidation;
 
     private List<Datum> placementUserData;
     private List<com.pbilbd.dto.responses.positionbyplacement.Datum> positionByPlacementData;
@@ -65,7 +71,9 @@ public class UpdateKYCFragment extends Fragment {
     private int districtId = -1;
     private int thanaId = -1;
     private int agentId = -1;
-    private String agentName = "";
+    private String agentName = null;
+    private String placementUserName = null;
+    private String positionName = null;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -74,6 +82,7 @@ public class UpdateKYCFragment extends Fragment {
         binding.marqueeText.setSelected(true);
         viewModel =
                 new ViewModelProvider(this).get(UpdateKYCViewModel.class);
+        accountValidation = new AwesomeValidation(ValidationStyle.TEXT_INPUT_LAYOUT);
         placementUserData = new ArrayList<>();
         positionByPlacementData = new ArrayList<>();
         countryList = new ArrayList<>();
@@ -94,6 +103,11 @@ public class UpdateKYCFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        //account validation
+        accountValidation.addValidation(getActivity(), binding.positionLayout.getId(), RegexTemplate.NOT_EMPTY, R.string.warning_empty);
+        accountValidation.addValidation(getActivity(), binding.ownFbLayout.getId(), RegexTemplate.NOT_EMPTY, R.string.warning_empty);
+        accountValidation.addValidation(getActivity(), binding.agentNameLayout.getId(), RegexTemplate.NOT_EMPTY, R.string.warning_empty);
 
         //search placement user on inputs
         binding.etPlacementUser.addTextChangedListener(new TextWatcher() {
@@ -120,12 +134,23 @@ public class UpdateKYCFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.e("Item Selected", "True");
                 String placementUserId = placementUserData.get(i).getId();
+                placementUserName = placementUserData.get(i).getText();
                 positionByPlacement(placementUserId);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        //position
+        binding.atvPosition.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (positionByPlacementData != null && !positionByPlacementData.isEmpty()) {
+                    positionName = positionByPlacementData.get(i).getPosition();
+                }
             }
         });
 
@@ -136,8 +161,58 @@ public class UpdateKYCFragment extends Fragment {
                 selectAgent();
             }
         });
+
+        //update account btn work
+        binding.updateAccountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (accountValidation.validate()) {
+                    updateAccount();
+                }
+            }
+        });
     }
 
+    //update account
+    private void updateAccount() {
+        if (placementUserName != null && positionName != null && agentName != null) {
+            ProgressDialog.show(context);
+            HashMap<String, String> params = new HashMap<>();
+            params.put("placement", placementUserName);
+            params.put("position", positionName);
+            params.put("fb", String.valueOf(binding.ownFbLayout.getEditText().getText()));
+            params.put("agent", agentName);
+            viewModel.updateAccount(params)
+                    .observe(getViewLifecycleOwner(), new Observer<UpdateAccountResponse>() {
+                        @Override
+                        public void onChanged(UpdateAccountResponse updateAccountResponse) {
+                            viewModel.getErrorUpdateAccount()
+                                    .observe(getViewLifecycleOwner(), new Observer<Integer>() {
+                                        @Override
+                                        public void onChanged(Integer integer) {
+                                            if (integer == 200) {
+                                                ProgressDialog.cancel();
+                                                Toasty.success(context, "Updated successfully.").show();
+                                            } else if (integer == 401) {
+                                                ProgressDialog.cancel();
+                                                Toasty.warning(context, BaseConstants.ERROR_UNAUTHORIZED).show();
+                                            } else if (integer == BaseConstants.FAILURE_ERROR) {
+                                                ProgressDialog.cancel();
+                                                Toasty.warning(context, BaseConstants.ERROR_FAILURE).show();
+                                            } else {
+                                                ProgressDialog.cancel();
+                                                Toasty.warning(context, BaseConstants.ERROR_UNKNOWN).show();
+                                            }
+                                        }
+                                    });
+                        }
+                    });
+        } else {
+            Toasty.warning(context, "Please provide valid information!").show();
+        }
+    }
+
+    //select agent
     private void selectAgent() {
 
         //set up select agent dialog
@@ -220,10 +295,10 @@ public class UpdateKYCFragment extends Fragment {
         saveAgentBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (agentId != -1 && agentName != null && !agentName.isEmpty()){
+                if (agentId != -1 && agentName != null && !agentName.isEmpty()) {
                     binding.tvAgentName.setText(agentName);
                     agentDialog.dismiss();
-                }else {
+                } else {
                     Toasty.warning(context, "Select agent please.").show();
                 }
             }

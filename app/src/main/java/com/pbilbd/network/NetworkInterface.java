@@ -10,6 +10,7 @@ import com.pbilbd.dto.responses.positionbyplacement.PositionByPlacementResponse;
 import com.pbilbd.dto.responses.regresponse.RegistrationResponse;
 import com.pbilbd.dto.responses.shoppingpointtransactions.ShoppingPointTransactionsResponse;
 import com.pbilbd.dto.responses.thana.ThanaResponse;
+import com.pbilbd.dto.responses.updateaccount.UpdateAccountResponse;
 
 import java.util.HashMap;
 
@@ -123,4 +124,11 @@ public interface NetworkInterface {
      * */
     @POST("thana-agents")
     Call<AgentsResponse> agentList(@Header("Authorization") String accessToken, @Query("district_id") int districtId, @Query("thana_id") int thanaId);
+
+    /**
+     * Update
+     * Account
+     * */
+    @POST("update-profile")
+    Call<UpdateAccountResponse> updateAccount(@Header("Authorization") String accessToken, @QueryMap HashMap<String, String> params);
 }

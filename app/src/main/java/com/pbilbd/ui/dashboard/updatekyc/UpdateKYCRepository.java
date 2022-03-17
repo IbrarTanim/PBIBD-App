@@ -12,9 +12,12 @@ import com.pbilbd.dto.responses.getkyc.GetKYCResponse;
 import com.pbilbd.dto.responses.placementuser.PlacementUserResponse;
 import com.pbilbd.dto.responses.positionbyplacement.PositionByPlacementResponse;
 import com.pbilbd.dto.responses.thana.ThanaResponse;
+import com.pbilbd.dto.responses.updateaccount.UpdateAccountResponse;
 import com.pbilbd.network.NetworkClient;
 import com.pbilbd.network.NetworkInterface;
 import com.pbilbd.utils.SharedPreffManager;
+
+import java.util.HashMap;
 
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
@@ -28,6 +31,7 @@ public class UpdateKYCRepository {
     private SharedPreffManager preffManager;
     private String ACCESS_TOKEN;
     private MutableLiveData<Integer> errorKYCLiveData;
+    private MutableLiveData<Integer> errorUpdateAccount;
     private MutableLiveData<GetKYCResponse> kycResponseLiveData;
 
     public UpdateKYCRepository(Context context) {
@@ -37,6 +41,7 @@ public class UpdateKYCRepository {
         ACCESS_TOKEN = "Bearer " + preffManager.getString(BaseConstants.ACCESS_TOKEN);
         errorKYCLiveData = new MutableLiveData<>();
         kycResponseLiveData = new MutableLiveData<>();
+        errorUpdateAccount = new MutableLiveData<>();
     }
 
     //search placement api implementation
@@ -181,11 +186,41 @@ public class UpdateKYCRepository {
         return  responseLiveData;
     }
 
+    //update account
+    public MutableLiveData<UpdateAccountResponse> updateAccount(HashMap<String, String> params){
+
+        MutableLiveData<UpdateAccountResponse> liveData = new MutableLiveData<>();
+        Call<UpdateAccountResponse> pojoCall = networkInterface.updateAccount(ACCESS_TOKEN, params);
+        pojoCall.enqueue(new Callback<UpdateAccountResponse>() {
+            @Override
+            public void onResponse(Call<UpdateAccountResponse> call, Response<UpdateAccountResponse> response) {
+                if (response.code() == 200){
+                    liveData.postValue(response.body());
+                    errorUpdateAccount.postValue(200);
+                }else if (response.code() == 401){
+                    errorUpdateAccount.postValue(401);
+                }else{
+                    errorUpdateAccount.postValue(BaseConstants.UNKNOWN_ERROR);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UpdateAccountResponse> call, Throwable t) {
+                errorUpdateAccount.postValue(BaseConstants.FAILURE_ERROR);
+            }
+        });
+        return liveData;
+    }
+
     public MutableLiveData<Integer> getErrorKYCLiveData() {
         return errorKYCLiveData;
     }
 
     public MutableLiveData<GetKYCResponse> getKycResponseLiveData() {
         return kycResponseLiveData;
+    }
+
+    public MutableLiveData<Integer> getErrorUpdateAccount() {
+        return errorUpdateAccount;
     }
 }
